@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <form>
+                    <div class="p-3 border bg-light">Nhap 1 tu tieng anh</div>
+                    <select id="tudien">
+                        <option value="">Hay chon mot tu </option>
+                        <option value="hello">hello</option>
+                        <option value="goodbye">goodbye</option>
+                        <option value="hi">hi</option>
+                        <option value="dog">dog</option>
+                        <option value="cat">cat</option>
+                        <option value="snack">snack</option>
+                        <option value="bird">bird</option>
+                        <option value="octopus">octopus</option>
+                        <option value="spider">spider</option>
+                        <option value="phone">phone</option>
+                    </select>
+                    <button type="button" onclick="kiemtra()">Them</button>
+                </form>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">Ket qua</div>
+                <textarea id="b"></textarea>
+            </div>
+        </div>
+    </div>
+    <script>
+        let ketqua = []
+        let kiemtra = () => {
+            console.log(ketqua.length)
+            if (ketqua.length == 0) {
+                let tudien = document.getElementById("tudien").value
+                ketqua.push(tudien)
+                for (let i = 0; i < ketqua.length; i++) {
+                    document.getElementById("b").innerHTML = ketqua[i]
+                }
+            } else {
+                let tudien2 = document.getElementById("tudien").value
+                console.log("Tu moi vao :" + tudien2)
+                let last_ele = ketqua[ketqua.length - 1]
+                console.log("Phan tu cuoi :" + last_ele)
+
+                if (last_ele != tudien2) {
+                    ketqua.push(tudien2)
+
+                    console.log(ketqua)
+
+                    for (let i = 0; i < ketqua.length; i++) {
+                        document.getElementById("b").innerHTML = ketqua
+                    }
+                } else {
+                     alert("Da bi trung!")
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

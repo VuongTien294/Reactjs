@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div>
+        <label>So thich</label>
+        <input type="checkbox" id="Dabong" name="sothich" value="Đá bóng" onchange="get1()">
+        <label>Đá bóng </label><br>
+
+        <input type="checkbox" id="Dacau" name="sothich" value="Đá cầu" onclick="get2()">
+        <label>Đá cầu</label><br>
+
+        <input type="checkbox" id="Tenis" name="sothich" value="Tenis" onclick="get3()">
+        <label>Tenis</label>
+
+        <input type="checkbox" id="Caulong" name="sothich" value="Cầu lông" onclick="get4()">
+        <label>Cầu lông</label>
+
+        <input type="checkbox" id="Bongban" name="sothich" value="Bóng bàn" onclick="get5()">
+        <label>Bóng bàn</label>
+        <button id="them" onclick="themca()">Them ca</button>
+    </div>
+
+    <div>
+        <textarea id="b"></textarea>
+    </div>
+
+    
+
+    <script>
+        let array =[]
+        let allHobbit =["Đá bóng"," Đá cầu","Tenis","Cầu lông","Bóng bàn"]
+
+        let get1 =()=>{
+            let dabong = document.getElementById("Dabong")
+            let text = document.getElementById("b")
+            if (dabong.checked) {
+                array.push(dabong.value)
+                text.innerHTML = array
+                console.log(array)
+            } else {
+                array.splice(array.indexOf(dabong.value),1)
+                text.innerHTML = array
+                console.log(array)
+               
+            }
+        }
+
+        let get2 =()=>{
+            let dabong = document.getElementById("Dacau")
+            let text = document.getElementById("b")
+            if (dabong.checked) {
+                array.push(dabong.value)
+                text.innerHTML = array
+                console.log(array)
+            } else {
+
+                array.splice(array.indexOf(dabong.value),1)
+                text.innerHTML = array
+                console.log(array)
+               
+            }
+        }
+        let get3 =()=>{
+            let dabong = document.getElementById("Tenis")
+            let text = document.getElementById("b")
+            if (dabong.checked) {
+                array.push(dabong.value)
+                text.innerHTML = array
+                console.log(array)
+            } else {
+
+                array.splice(array.indexOf(dabong.value),1)
+                text.innerHTML = array
+                console.log(array)
+               
+            }
+        }
+        let get4 =()=>{
+            let dabong = document.getElementById("Caulong")
+            let text = document.getElementById("b")
+            if (dabong.checked) {
+                array.push(dabong.value)
+                text.innerHTML = array
+                console.log(array)
+            } else {
+
+                array.splice(array.indexOf(dabong.value),1)
+                text.innerHTML = array
+                console.log(array)
+               
+            }
+        }
+        let get5 =()=>{
+            let dabong = document.getElementById("Bongban")
+            let text = document.getElementById("b")
+            if (dabong.checked) {
+                array.push(dabong.value)
+                text.innerHTML = array
+                console.log(array)
+            } else {
+
+                array.splice(array.indexOf(dabong.value),1)
+                text.innerHTML = array
+                console.log(array)
+               
+            }
+        }
+
+
+
+
+        let themca = () => {
+            let sothich = document.getElementsByName("sothich")
+            console.log(sothich.values)
+            console.log(typeof(sothich))
+
+            console.log(sothich.length)
+            let result = document.getElementById("b")
+            result.innerHTML = allHobbit
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>Tu</label>
+        <input type="text" id="text" />
+        <button onclick="dem()">Dem</button>
+    </div>
+    <div>
+        <label>Van ban</label>
+        <textarea id="textarea">a,b,c,d,a,a</textarea>
+    </div>
+
+    <script>
+        
+        let array = ["a","b","c","d","a","a"]
+        let dem = () => {
+            var count = 0
+            let userText = document.getElementById("text")
+            console.log(userText.value)
+                for (let i = 0; i < array.length; i++) {                 
+                    if (array[i] == userText.value) {
+                        count++                                          
+                    }
+                }
+                alert("Da xuat hien " + count + " lan!")
+
+            
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

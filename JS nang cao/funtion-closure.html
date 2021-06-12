@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funtion Closure</title>
+</head>
+
+<body>
+  <!-- Funtion Closure:Khai bao 1 ham ben trong 1 ham khac va reture ve ham do(Dong goi ben trong)
+    Dung de bao mat du lieu(trong VD duoi thi do la bien intro va bien local)
+        function adder(n){
+ var intro = 'This answer is ';
+ var local = n;
+ return function(number){
+   var result = number + local;
+   console.log(intro + result);
+ }
+}
+var adder2 = adder(2);
+adder2(10);
+// => This answer is 12
+    
+Trong ví dụ trên, hàm closures là một hàm số không tên function (number). Hàm closures này sử dụng biến cục bộ
+ của outer function là intro và local.
+
+Khi mình gọi hàm adder(2), hàm số này thực hiện và kết quả trả về được gán vào biến adder2. 
+Khi gọi adder2(10), kết quả trả về là 12, chứng tỏ hàm closures vẫn có thể truy cập tới biến cục bộ của outer 
+function khi hàm đó thực hiện xong. 
+ -->
+
+  <script>
+    function counter() {
+      var count = 0;
+
+      function stepUp() {
+        count++
+        return count;
+      }
+
+      return stepUp
+    }
+
+    var up = counter();
+    console.log(typeof (up))
+
+    console.log(up())
+    console.log(up())
+    console.log(up())
+
+    function xinChao() {
+      var s = "Hello"
+
+      var hi = (name) => {
+        console.log(s + " " + name)
+      }
+
+      return hi
+    }
+
+    let xc = xinChao()//hi function
+    xc("Javascript")
+
+    //vat tat
+    xinChao()("Java Master");
+
+
+    let $ = (function xinChao() {
+      var s = "Hello"
+
+      var hi = (name) => {
+        console.log(s + " " + name)
+      }
+
+      return hi
+    })()
+
+    $("trungtamjava.com")
+  </script>
+</body>
+
+</html>

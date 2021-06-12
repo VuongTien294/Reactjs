@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Add Category</title>
+</head>
+<body>
+    <script>
+        const BASE_URL = "http://localhost:8080/api";
+        const UPDATE_CATEGORY_URL = BASE_URL +"/admin/category/update"
+
+        let requestBody ={
+            "id":104,
+            "name":"TEST 2"//truyen day du ca id va name vi day la update
+        }
+
+        updateCategory = async()=>{
+            let token =btoa("0123456789:123456")//username,mk nguoi dung
+            let resp = await fetch(UPDATE_CATEGORY_URL,
+            {
+                method:"PUT",
+                headers:{
+                    "Authorization": "Basic " + token,
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify(requestBody)
+            }
+              
+            )
+
+            console.log(resp)
+            try {
+                if (resp.ok) {
+                    // let responseDTO = await resp.json()
+                    // console.log(resp.json())
+                    console.log("Success")//do ham o phia backend update la ham void nen ko tra ve gi ca.Chi console.log de biet la da thanh cong
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        addCategory()
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiem tra phan Section 2:Bai 1</title>
+</head>
+<body>
+    <script>
+      //BAI 1:
+      var s1 ="My name is trungtamjava"
+      console.log("Do dai chuoi s1: "+s1.length)
+      var s2 ="dkjfhjfhk"
+      console.log(s2.indexOf(s1))//Kiem tra xem chuoi s2 co nam trong s1 ko.Neu co thi kq #-1.Neu ko thi = -1
+      //Kiem tra xem trong s1 co bao nhieu chu A xuat hien
+        //////////////////////
+          var count = (s1.match(/a/g) || [].length)
+
+          console.log("So lan chu a xuat hien :"+count)
+        ///////////////////////
+
+
+        //Cat chuoi thanh mang
+        var arrayStr = s1.split("i")
+        for (i = 0; i < arrayStr.length; i++) {
+            console.log(arrayStr[i])
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

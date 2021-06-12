@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<body>
+    <!-- Giong het nhu java -->
+    <script>
+        class Person{
+            constructor(id,name){
+                this._id=id//viet _ nhu vay cho de nhin
+                this._name =name
+            }
+            info(){//ham info trong class ko can khai bao la funtion
+                 console.log(this._id+"-"+this._name)
+            }
+            static hello(){//khi co static thi ham do la cua class.Doi tuong(person1,person2) ko dung dc ham nay
+                console.log("Hello")
+            }
+            set id(id){//dung cung dc ko dung cung dc do de nham vs thuoc tinh id ben tren
+                this._id=id
+            }
+            get id(){
+                return this._id
+            }
+        }
+
+        var person1 = new Person(1,"Tien")
+        var person2 = new Person(2,"Nga")
+
+        person1.info()
+        person2.info()
+        Person.hello()
+        // person1.hello()//neu goi nhu vay se sai va ko cho ra gi(uncaught type)
+        person1.id =10
+        console.log(person1.id)
+
+
+        //Ke thua trong JS
+        class Student extends Person{
+            constructor(lop,id,name){
+                super(id,name)//ke thua tu thang person
+                this._lop =lop
+            }
+            info(){
+                super.info()
+                console.log("Lop :"+this._lop);
+            }
+        }
+
+        var stu =new Student(12,6,"A")
+        stu.info()
+
+    </script>
+</body>
+</html>

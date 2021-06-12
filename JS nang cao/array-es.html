@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array in ES 6</title>
+</head>
+<body>
+    <script>
+        var numbers =[1,4,5,2]
+
+        //duyet mang bang forEach
+        numbers.forEach(function (value,index) {//forEach la ham callback duyet bang value,index
+            console.log("Value "+value+" at index "+index)
+        })
+
+        let newNumber =numbers.map(function (value,index) {//tao 1 mang moi la map tra ve cac value *2
+            return value*2
+        })
+        
+        //duyet mang
+        newNumber.forEach((value)=>{
+            console.log("Tra ve map gom cac value *2 :"+value)
+        })
+
+        //filter :dung de loc cac value(Tra ve 1 mang)
+        let eventNumber =numbers.filter((value,index)=>{
+            return value %2 ==0// loc va tra ve cac value %2 ==0
+        })
+
+        eventNumber.forEach((value)=>{
+            console.log("Cac value sau khi loc nhung so %2 ==0 : "+value)
+        })
+
+        //loc mang doi tuong
+        let person =[{id:1,name:"Tien"},{id:2,name:"Tien"},{id:3,name:"Nga"}]
+        let filterPerson =person.filter((person,index)=>{
+            return person.name =="Tien"
+        })
+
+        filterPerson.forEach((person)=>{
+            console.log("Id :"+person.id+" Ten nguoi dung :"+person.name)
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/category/listCategory.html">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/category/addCategory.html">Add
+                                    Category</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/category/listCategory.html">List
+                                    Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Product
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/product/addProduct.html">Add
+                                    Product</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/product/listProduct.html">List
+                                    Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/user/addUser.html">Add
+                                    User</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/user/listUser.html">List
+                                    User</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/post/addPost.html">Add
+                                    Post</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/post/listPost.html">List
+                                    Post</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/login/login.html">Login</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <h2>Login</h2>
+    <form id="form_login">
+        <div>
+            <label>UserName</label>
+            <input id="username" name="username" placeholder="Nhap username" />
+        </div>
+        <div>
+            <label>Password</label>
+            <input id="password" name="password" placeholder="Nhap password" />
+        </div>
+        <div>
+            <button type="button" id="login-btn" onclick="login()">Login</button>
+        </div>
+    </form>
+
+    <script>
+
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+        const LOGIN_URL = BASE_URL + "/login"
+        const User_INFO_URL =BASE_URL + "/member/me"    
+
+        login = async () => {
+            let username = document.getElementById("username").value
+            console.log(username)
+            let password = document.getElementById("password").value
+            console.log(password)
+           
+            //phai dung doi tuong URLSearchParams de them doi tuong vao body khi day form thuong bang post 
+            //neu day form data thi ko can hoac day form thuong nhung dung get thi ko can
+            var urlencoded = new URLSearchParams();
+            urlencoded.append("username", username);
+            urlencoded.append("password", password);
+
+
+            try {
+                let resp = await fetch(LOGIN_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            Accept: '*/*',
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: urlencoded
+                    }
+                )
+
+                let data = await resp.json()
+                if (resp.ok) {
+                    console.log(data)
+                    console.log(data.accessToken)
+                    let token = await data.accessToken
+                    localStorage.setItem("token",token)
+                    await getUserInfo()
+                } else
+                    throw data
+            } catch (error) {
+                console.log(error+" loi sai username hoac password")
+            }
+        }
+
+        getUserInfo = async()=>{
+            try {
+                let resp = await fetch(User_INFO_URL,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token"),
+                        }
+                        // body: urlencoded
+                    }
+                )
+
+                
+                if (resp.ok) {
+                    let data = await resp.json()
+                    console.log("Ten nguoi dung :"+data.name)
+                    // window.location.href="/Section 7-final/category/addCategory.html"
+                } else
+                    throw data
+            } catch (error) {
+                console.log("Token sai hoac het han "+error)
+            }
+
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

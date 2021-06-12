@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai2</title>
+</head>
+<body>
+    <script>
+        //Convert 1 string ra so nguyen va so thuc
+        var s1 ="1111234454"
+        var s2 = parseInt(s1)
+        console.log("String s1 sau khi convert :"+s2)
+
+        //Kiem tra 1 string co phai la so hay ko ?
+        var check = isNaN(s1)
+        console.log("Check co phai la so hay ko :"+check)
+
+        //Ham lay thoi gian hien tai
+        function time() {
+            return new Date()
+        }
+
+        //ham lay thoi gian sau 7 ngay nua xem la thu may
+        function timeAfterServenDay() {
+            var time = new Date();
+            time.setDate(time.getDate()+7)
+            return time
+        }
+
+        console.log(time())
+        console.log(timeAfterServenDay())
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Class</title>
+</head>
+
+<body>
+    <!-- Sử dụng this trong class ES6 với Arrow Function sẽ fix luôn this là đối tượng được tạo ra từ class đó, 
+    do vậy không cần phải bind đối tượng vào nữa. -->
+    <script>
+        class Person {
+            constructor(id) {
+                this._id = id
+            }
+            info() {
+                console.log("ID: " + this._id)
+            }
+            infoArrow = () => {
+                console.log("ID Arrow: " + this._id)
+            }
+        }
+        let person = new Person(10)
+
+        setTimeout(person.info.bind(person), 500)
+        setTimeout(person.infoArrow, 500)
+    </script>
+    <button onclick="person.infoArrow()">Click me</button>
+</body>
+
+</html>

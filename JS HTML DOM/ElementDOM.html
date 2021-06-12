@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element DOM</title>
+</head>
+
+<body>
+    <div id="header">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li><a href="">Product</a></li>
+        </ul>
+    </div>
+    <div class="footer">
+        <p>Copy right by VuongTien</p>
+    </div>
+
+    <script>
+        let divHeader = document.getElementById("header")//lay the header bang id
+        console.log(divHeader)
+        let aList = divHeader.getElementsByTagName("a")//lay tat ca cac element co ten the la <a>.kq tra ve se la collection dang array
+        console.log("So luong the a la :" + aList.length)
+        for (let i = 0; i < aList.length; i++) {//duyet mang aList chua tat ca cac the <a>
+            aList[i].href = "https://trungtamjava.com/"//thay doi thuoc tinh href trong tat ca cac the <a>
+            aList[i].innerHTML = "What sup bro" //Thay doi attribute tu Home thanh What sup bro
+            aList[i].setAttribute("title", "Home")
+
+            console.log(aList[i].href)//lay thuoc tinh href cach 1
+            console.log(aList[i].getAttribute("href"))//lay thuoc tinh href cach 2
+
+            aList[i].innerHTML = "<b>Home</b>"//the <b> la the in dam thay doi What sup bro thanh Home
+
+        }
+
+        ///1 so cach lay element khac
+        let divList = document.getElementsByTagName("div")//lay cac element co ten the la <div>
+        let divFooter = document.getElementsByClassName("footer")//lay tat ca cac the co class name = footer
+        let footerDivList = document.querySelectorAll("div.footer")//tim tat ca the <div> co class = footer
+            console.log(footerDivList)
+        let footerDiv = document.querySelector("div.footer")//querySelect thi lay thang dau tien.Lay the <div> co class= footer dau tien
+        let pFooterList = footerDivList[0].getElementsByTagName("p")//lay tat ca the <p> trong the <div> footer
+        pFooterList[0].innerHTML="Sau khi sua footer"
+        console.log(pList)
+    </script>
+</body>
+
+</html>

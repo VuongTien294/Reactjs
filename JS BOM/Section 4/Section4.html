@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sectin 4</title>
+</head>
+
+<body>
+    <button onclick="GetTimeNow()">Time Now</button>
+    <button onclick="getMap()">Vi tri hien tai</button>
+    <script>
+        //Bai1:Hien thi thoi gian
+        function GetTimeNow() {
+            let now = new Date()
+            document.write("Thoi gian hien tai :" + now)
+        }
+        //Bai2:Luu mang doi tuong vao localStorage
+        let userArray = [{ id: 1, name: "Tien" }, { id: 2, name: "Nga" }]
+        localStorage.setItem("user", JSON.stringify(userArray))
+
+        //Doc mang doi tuong ra
+        let a = localStorage.getItem("user")
+        console.log("Mang doi tuong la :"+a)
+        //Them doi yuong vao mang
+        let newUser={id:3,name:"Test"}
+        let b =JSON.parse(localStorage.getItem("user"))
+        console.log(b)
+        b.push(newUser)
+        console.log("Mang moi sau khi push la:"+b)
+        //Bai3:Lay vi tri hien tai cua nguoi dung
+        let vitrihientai={}//vi tri tra ve la 1 doi tuong
+        navigator.geolocation.getCurrentPosition(function (position) {
+            vitrihientai =position.coords//gan vi tri hien tai
+        })
+        function getMap() {
+            location.href="https://www.google.com/maps/@"+vitrihientai.latitude+","+vitrihientai.longitude
+            console.log("Vi tri hien tai :"+vitrihientai)
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Event</title>
+</head>
+
+<body>
+    <a href="#" onmouseover="changeColor(this)" onmouseout="this.style.color='green'" onclick="console.log(this);this.style.display='none'">Click me</a><br>
+    <!--Bat su kien khi click thi dong click me bien mat-->
+
+    <input type="text" onkeyup="upperCase(this)"><br><!--Bat su kien khi chung ta go phim vao input-->
+    <button id="submitBtn">Login</button>
+
+    <script>
+        //Cac cach them truc tiep vao the html
+        function changeColor(self) {//chuyen mau thanh do
+            self.style.color = "red"
+        }
+        function upperCase(self) {//khi go phim vao input thi chu cai se thanh chu in hoa upperCase
+            let value =self.value
+            self.value =value.toUpperCase()
+        }
+
+        //Cach 2 de them event va listener
+        let submitBtn =document.getElementById("submitBtn")
+        // submitBtn.onclick =function(){
+        //     alert("Succes Login")
+        // }
+        //Cach 3 dung addEvenListener
+        submitBtn.addEventListener("click",function () {
+            alert("Login Success")
+        })
+
+        //3 cach dung deu mang lai nhu nhau nhung hieu qua hon thi la cach 2 3
+    </script>
+</body>
+
+</html>

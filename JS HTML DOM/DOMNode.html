@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Node</title>
+</head>
+
+<body>
+    <!--DOM Node la cac ham trong interface de them sua xoa cac element tren giao dien-->
+    <div id="header">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+        </ul>
+    </div>
+    <div class="footer">
+        <p>Copyright JavaMaster</p>
+    </div>
+
+    <script>
+        let ulElement = document.getElementById("header").firstElementChild// lay gia tri con dau tien cua element(nghia la the ul dau tien)
+        let li =document.createElement("li")//tao them the li thi trong dau ngoac la "li"
+        let a =document.createElement("a")
+        a.href="http://trungtamjava.com/"
+        a.innerHTML="Java Master"
+
+        li.appendChild(a)//them the a vao trong the li
+        //ulElement.appendChild(li)//them tiep the li vao the ul(append la them vao sau cung)
+        //ulElement.prepend(li)//them the li vao ul(prepend la them len dau)
+
+        let liFirst = ulElement.firstElementChild//lay the dau tien trong the ul(nghia la tra ve the li dau tien)
+        console.log(liFirst)
+
+        ulElement.replaceChild(li,liFirst)// thay the liFirst bang the li(Can hoi thay them)
+
+        //xoa trong DOM Node
+        ulElement.removeChild(li)// xoa the li
+
+    </script>
+</body>
+
+</html>

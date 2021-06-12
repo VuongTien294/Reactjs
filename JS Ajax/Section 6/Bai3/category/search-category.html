@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>API Search Category</title>
+</head>
+
+<body>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody id="body-table">
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+        const SEARCH_CATE_URL = BASE_URL + "/category/search"
+
+        loadCategory = async () => {
+            try {
+                // let token = btoa("0123456789:123456")
+                let respon = await fetch(SEARCH_CATE_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            Accept: "*/*",
+                            "Content-Type": "application/json;charset=utf-8",
+                            // "Authorization": "Basic " + token
+                        },
+                        body: JSON.stringify({})                        
+                    }
+                )
+                console.log(respon)
+                console.log(respon.data)
+                if (respon.ok) {
+                    let jsonData = await respon.json()
+                    console.log(jsonData)
+                    
+                    ////////////////////////////////////////////
+
+                    ////////////////////////////////////////////
+                }
+
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+                    // async function createTr() {
+                    //     let person = await loadCategory()
+                    //     console.log(person)
+                    //     let trElement = document.createElement("tr")
+
+                    //     let tdElement1 = document.createElement("td")
+                    //     tdElement1.innerHTML = person.name
+
+                    //     let tdElement2 = document.createElement("td")
+                    //     tdElement2.innerHTML = person.password
+
+                    //     trElement.appendChild(tdElement1)
+                    //     trElement.appendChild(tdElement2)
+
+                    //     let tdBody = document.getElementById("body-table")
+                    //     tdBody.appendChild(trElement)
+                    // }
+
+                    // for (let i = 0; i < person.length; i++) {
+                    //     createTr(person[i])
+                    // }
+
+        loadCategory()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+
+</html>

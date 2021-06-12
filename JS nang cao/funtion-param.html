@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function tong(x, y) {
+            if (y === undefined) {
+                y = 0
+            }
+            return x + y
+        }
+
+        console.log(tong(1, 2))
+        console.log(tong(1))
+
+        function sum() {
+            var tong = 0
+            for (let i = 0; i < arguments.length; i++) {//bien arguments dung de chi cac bien trong ham
+                tong += arguments[i]
+
+            }
+            return tong
+        }
+        var s = sum(1, 2, 3, 4, 5, 6, 7, 8)
+        console.log("Tong la : " + s)
+
+        function sumOfArray(arr) {
+            var tong = 0
+            for (let i = 0; i < arr.length; i++) {
+                tong += arr[i]
+            }
+            return tong;
+        }
+
+        console.log("TONG ARRAY____" + sumOfArray([1, 2, 3, 4, 5, 6, 7, 8]))
+        //2 cach tren deu cho ket qua trong nhau.Cach tren la cach viet ngan gon cua cach duoi
+
+        //ES6
+        function hieu(x = 1, y = 10) {
+            return y - x
+        }
+
+        console.log(hieu(5))
+
+        ///self - invoke :khi dung cach nay ta se dong ngoac ham sau do goi luon
+        var t = (function thuong(x, y = 1) {
+            return x / y
+        })(10, 5)
+    </script>
+</body>
+
+</html>

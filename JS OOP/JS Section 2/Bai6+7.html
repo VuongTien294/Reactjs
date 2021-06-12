@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure+CallBack</title>
+</head>
+<body>
+    <script>
+        //Closure
+        //Closure là một hàm được viết lồng vào bên trong một hàm khác (hàm cha) nó có thể sử dụng biến toàn cục,
+        // biến cục bộ của hàm cha và biến cục bộ của chính nó (lexical scoping)
+        function counter() {
+            var count = 0;
+
+            function stepUp() {
+                count++
+                return count
+
+            }
+            return stepUp
+        }
+        var up = counter();
+        console.log(typeof (up))
+        console.log(up())
+        console.log(up())
+        console.log(up())
+        console.log(up())
+
+        //Callback
+        //Callback function có thể được hiểu nôm na là một function A được truyền vào một function B thông qua danh sách các
+        // tham số của B. Lúc này tại hàm B sẽ gọi đến hàm A để thực hiện một chức năng nào đó mà A đang nắm giữ. Javascript
+        // là một ngôn ngữ lập trình hướng sự kiện và bất đồng bộ nên callback function đóng vai trò rất quan trọng, bạn sẽ 
+        //truyền một callback function vào các sự kiện và xử lý bất đồng bộ đó.
+        // bài Sử dụng callback.
+        
+        //Viết các hàm tong, hieu , tich, thuong 2 tham số a, b;
+
+        //Viết 1 hàm tinhToan tham số truyền vào là các hàm bên trên (tong, hieu, tich, thuong)
+
+        // Bên trong hàm tinhToan sẽ khai báo 2 biên a = 10, b = 20. và sẽ gọi hàm callback để lấy kq trả về tương ứng. in ra màn hình kết quả đó.
+
+        function tong(x, y) {
+            return x + y
+        }
+
+        function hieu(x, y) {
+            return x - y
+        }
+
+        function tich(x, y) {
+            return x * y
+        }
+
+        function thuong(x, y) {
+            return x / y
+        }
+
+        function tinhToan(call) {
+            var kq = call(10, 20)
+            console.log(" KQ " + kq)
+
+        }
+
+        tinhToan(tong)
+        tinhToan(hieu)
+        tinhToan(tich)
+        tinhToan(thuong)
+    </script>
+</body>
+</html>

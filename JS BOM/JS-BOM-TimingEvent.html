@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS BOM TimingEvent</title>
+</head>
+<body>
+    <button onclick="stopTimeOut()">Stop time out</button>
+    <button onclick="stopInterval()">Stop Interval</button>
+    <script>
+        function hello() {
+            console.log("Hellooooo")
+        }
+        let timeOut =setTimeout(hello,10000)//sau 10s thi goi ham hello(Ham setTimeOut se tra ve 1 bien)
+
+        function stopTimeOut() {
+            clearTimeout(timeOut)
+        }
+
+        let timeInterval =setInterval(function () {//Ham interval cho phep lap di lap lai
+            console.log(new Date().toUTCString())
+        },1000)//sau 1s se goi ham nay 1 lan
+
+        function stopInterval() {
+            window.clearInterval(timeInterval)
+        }
+    </script>
+</body>
+</html>

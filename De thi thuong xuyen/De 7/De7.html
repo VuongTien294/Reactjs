@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="choiceForm">
+        <table border=0>
+            <tr>
+                <td valign="top" width=175>
+                    So Thich
+                    <br>
+                    <select multiple name="available" size=7>
+                        <option value=1>Da Bong
+                        <option value=2>Da Cau
+                        <option value=3>Tenis
+                        <option value=4>Cau Long
+                        <option value=5>Bong ban
+                        <option value=6>The duc dung cu
+                        <option value=7>Dua xe
+                    </select>
+
+                <td valign="top">
+                    Your Choices:
+                    <br>
+                    <select multiple name="choiceBox" style="width:150px;" size="7">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2 height=10>
+                    <input type="button" value="Them" onclick="moveOver()">
+                    <input type="button" value="Them Ca" onclick="Themca();">
+                    <input type="button" value="Reset" onclick="Reset();">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function moveOver() {
+            var boxLength = document.choiceForm.choiceBox.length;
+            var selectedItem = document.choiceForm.available.selectedIndex;
+            var selectedText = document.choiceForm.available.options[selectedItem].text;
+            var selectedValue = document.choiceForm.available.options[selectedItem].value;
+            var i;
+            var isNew = true;
+            if (boxLength != 0) {
+                for (i = 0; i < boxLength; i++) {
+
+                    thisitem = document.choiceForm.choiceBox.options[i].text;
+                    if (thisitem == selectedText) {
+                        isNew = false;
+                        break;
+                    }
+                }
+            }
+            if (isNew) {
+
+                document.choiceForm.available.options[selectedItem].innerHTML = ""
+
+                newoption = new Option(selectedText, selectedValue, false, false);
+                document.choiceForm.choiceBox.options[boxLength] = newoption;
+            }
+            document.choiceForm.available.selectedIndex = -1;
+        }
+
+        let Themca = () => {
+            var boxChose = document.choiceForm.available
+            console.log(boxChose.length)
+            var boxOutput = document.choiceForm.choiceBox;
+            console.log(boxOutput.length)
+            let array = ["Da bong", "Da cau", "Tenis", "Cau long", "Bong ban", "The duc dung cu", "Dua xe"]
+            for (let i = 0; i < array.length; i++) {
+                document.choiceForm.available.innerHTML = ""
+
+                newoption = new Option(array[i]);
+                document.choiceForm.choiceBox.options[boxOutput.length] = newoption;
+
+            }
+
+        }
+
+        let Reset = () => {
+            window.location.reload()
+        }
+
+    </script>
+</body>
+
+</html>

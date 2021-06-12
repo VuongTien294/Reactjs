@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+
+<body>
+    <script>
+        var now = new Date()//Date cho thoi gian hien tai
+        console.log(now)
+
+        //1 so ham get trong Date
+        console.log(now.getFullYear())
+        console.log(now.getHours())
+
+        //1 so ham set trong Date
+        now.setFullYear(2019)
+        console.log(now)
+
+        //
+        console.log(typeof(now))
+
+        //truyen ngay thang vao trong ham
+        var date =new Date(2020,11,10)//trong doi tuong Date thi 0 nghia la thang 1.O day la 11 thi console.log se la thang 12
+        console.log(date)
+    </script>
+</body>
+
+</html>

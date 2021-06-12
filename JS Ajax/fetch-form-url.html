@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch-Form-URL</title>
+</head>
+
+<body>
+    <!-- Sử dụng fetch để gọi AJAX nhưng sử dụng FORM URL để gửi dữ liệu từ client lên server.
+     Cùng tìm hiểu cách thức truyền dữ liệu theo dạng này. -->
+    <script>
+        const BASE_URL = "http://localhost:8080/api";
+        const GET_CATEGORY_URL = BASE_URL + "/category/100"
+
+        getCategory = async () => {
+            try {
+                let resp = await fetch(GET_CATEGORY_URL,
+                    {
+                        method: "GET",
+                        headers: {
+
+                        }
+                    })
+
+                console.log(resp)
+                if (resp.ok) {
+                    let responseDTO = await resp.json()//tra ket qua ve theo dang json
+                    console.log(responseDTO)
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getCategory()
+
+        /////////////////////////////////////////////
+        const BASE_URL = "http://localhost:8080/api";
+        const DELETE_CATEGORY_URL = BASE_URL + "/admin/category/delete?id=1"
+
+        deleteOneCategory = async () => {
+            try {
+                let token = btoa("0123456789:123456")
+
+                let resp = await fetch(DELETE_CATEGORY_URL,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            "Authorization": "Basic " + token//xac thuc
+                        }
+                    })
+
+                console.log(resp)
+                if (resp.ok) {
+                    //let responseDTO = await resp.json()
+                    console.log("SUCCESS")//
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        deleteOneCategory()
+
+    </script>
+</body>
+
+</html>

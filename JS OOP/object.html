@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Tao object (Cach 1)
+        var person = {
+            name: "Tien",
+            age: 21,
+            address: "Ha Dong",
+            talk: function () {
+                return this.name + " " + this.age + " tuoi dang song o " + this.address //this de tro nguoc lai doi tuong
+            }
+
+        }
+
+        //Lay thuoc tinh cua doi tuong
+        console.log(person.name)//cach 1
+        console.log(person.address)
+        console.log(person["age"])//Tao mang xong do lay thuoc tinh(Nho la ko co dau . dau)
+        console.log(person.talk())//Goi thuoc tinh la 1 ham
+        console.log(person)//Co the goi ra 1 doi tuong duoc
+
+        //Them thuoc tinh vao object
+        person.school = "Dai Hoc Cong Nghe Giao Thong"
+        console.log(person.school)
+
+        //Tao object cach 2
+        var person2 = new Object();
+        person2.name ="Nga"
+        person2.age =21
+        person2.address="Quang Ninh"
+
+        console.log(person2.name)
+
+
+        //Bien thuoc tinh cua 1 object thanh 1 ham co the thay doi gia tri tuy y(Set Get)
+        var person3 ={
+            name:"Tien",
+            setName: function (name) {//Set cach 1(Nen dung cach nay)
+                this.name =name //thay doi lai gia tri cua thuoc tinh name
+            },
+            set setName2 (name){//Set cach 2
+                this.name =name
+            },
+            getName: function () {//Get cach 1(Nen dung cach nay)
+                return this.name;
+            },
+            get getName2(){//Get cach 2
+                return this.name;
+            }
+        }
+
+        console.log(person3.name)
+
+        person3.setName ="Keo Ham"
+        console.log(person3.name)
+
+        person3.setName2="Keo Dien"
+        console.log(person3.name)
+
+        console.log(person3.getName())//Lay get kieu 1 giong nhu lay 1 ham
+        console.log(person3.getName2)//Lay get kieu 2 giong nhu lay 1 thuoc tinh
+    </script>
+</body>
+
+</html>

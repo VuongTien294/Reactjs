@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises All</title>
+</head>
+<body>
+    <!-- Promises All là một hàm giúp chúng ta theo dõi tất cả trạng thái của một mảng promises sau khi 
+    thực thi thành công hoặc thất bại. -->
+    <script>
+         let promises1 =new Promise((resolve,reject)=>{
+             setTimeout(() => {
+                 resolve("ok 1",1000)
+             })
+
+            //  setTimeout(() => {
+            //      reject("error 500",2000)
+            //  })
+         })
+         let promises2 =new Promise((resolve,reject)=>{
+             setTimeout(() => {
+                 resolve("ok 2",1000)
+             })
+
+            //  setTimeout(() => {
+            //      reject("error 500",2000)
+            //  })
+         })
+         let promises3 =new Promise((resolve,reject)=>{
+             setTimeout(() => {
+                 resolve("ok 3",1000)
+             })
+
+            //  setTimeout(() => {
+            //      reject("error 500",3000)
+            //  })
+         })
+
+         Promise.all([promises1,promises2,promises3])
+         .then(
+             (resp)=>{
+                console.log(resp)//khi tat ca cac promises deu la resolve thi moi nhay vao then nay va in ra 1 mang gom 3 promises
+             }
+         ).catch(
+             (err)=>{
+                 console.log(err)//chi can 1 promises la reject thi se nhay vao catch nay
+             }
+         )
+    </script>
+</body>
+</html>

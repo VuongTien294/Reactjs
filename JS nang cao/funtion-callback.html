@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Funtion</title>
+</head>
+
+<body>
+    <!--  callback tức là ta truyền một đoạn code (Hàm A) này vào một đoạn code khác (Hàm B). 
+    Tới một thời điểm nào đó, Hàm A sẽ được hàm B gọi lại (callback).
+
+ Ví dụ của callback. Ứng dụng trong jQuery
+
+Bạn có việc phải đi công tác xa nhà.  Bạn dặn vợ, trong thời gian bạn đi, nếu như có ai giao quà tới, 
+hãy đem qua tặng em gái dễ thương hàng xóm. Hàm A ở đây là việc tặng quà cho em hàng xóm:
+
+function tangQua(qua) {
+   return console.log("Đã tặng " + qua);  
+}
+
+Hàm B ở đây là việc vợ bạn ở nhà. Ta truyền hàm A vào như 1 argument cho hàm B, tại 1 thời điểm nào đó,
+ hàm B sẽ gọi hàm A (Tức là vợ bạn mang quà qua cho em hàng xóm).
+
+function oNha(vo, tangQua) {
+   var qua = "Quà đã nhận";
+   tangQua(qua);  
+}
+Như các bạn thấy, hàm A được truyền vào như 1 argument. Các bạn biết jQuery có thể sử dụng rất nhiều callback mà ko biết. 
+Hãy xét ví dụ dưới đây, ta hiển thị 1 pop-up khi click vào 1 button. Bài viết trước nói về fiddle nên lần này mình sẽ đưa
+ link fiddle làm ví dụ:
+http://jsbin.com/potivubifi/1/watch?html,js,output
+
+Ở đây, function showPopup chính là hàm A, còn $(‘#btn’).click() là hàm B. Hàm B sẽ gọi hàm A khi ta click vào nút. 
+Các bạn viết jQuery thường dùng cách ở dưới, nhưng không hiểu bản chất của việc mình đang làm.
+
+-->
+    <script>
+        function tong(x, y) {
+            return x + y
+        }
+
+        function hieu(x, y) {
+            return x - y
+        }
+
+        function tinhToan(call) {
+            var kq = call(10, 5)
+            console.log("KQ " + kq)
+        }
+
+        tinhToan(tong); //call = tong
+        tinhToan(hieu); //call =hieu
+
+        tinhToan(
+            (x, y) => {
+                return x * y
+            }
+        )
+
+        tinhToan(
+            function (x, y) {
+                return x / y
+            }
+        )
+
+        //js
+        setTimeout(function () {
+            console.log("Xin chao")
+        }, 500)
+    </script>
+</body>
+
+</html>

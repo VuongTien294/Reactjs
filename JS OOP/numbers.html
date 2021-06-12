@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers</title>
+</head>
+<body>
+    <script>
+        console.log("Max number la "+Number.MAX_VALUE)
+        console.log("Min number la "+Number.MIN_VALUE)
+
+        var x =10.5
+
+        //Cac phep tinh number vs string
+        var s ="10"
+        var tong = s+x
+        console.log("Tong cua 1 so vs 1 string : "+tong)// Cong 1 number vs 1 string t dc 1 string
+
+        var hieu = s-x
+        console.log("Hieu cua 1 so vs 1 string : "+hieu)//tuong tu vs * va -.Hieu cua 1 so vs 1 string se la so
+
+        var n =NaN//Not a number
+        var s3 = x/"AAAAAABC"
+        console.log("Thuong cua 1 so chia cho 1 string :"+s3)
+
+        var check =isNaN("ABC")//ham isNaN la ham check co phai ko la 1 so hay ko.Tra ve True False
+        console.log(check)
+
+        var thuong =2/0
+        console.log(thuong)//Ket qua ra infinity
+
+        var number = new Number(10)
+        var m =10
+        if (m==number) {//so sanh gia tri
+            console.log("Bang nhau")
+        }
+        if (m===number) {//so sanh ca ve gia tri va kieu du lieu
+            console.log("Bang nhau")
+        } else {
+            console.log("Khac nhau")
+        }
+
+        //1 so ham number
+        Math.PI//lay so PI
+        Math.sqrt(49)//Can bac 2
+        var ceilUp =Math.ceil(3.2)//lam tron len
+        console.log("So sau lam tron : "+ceilUp)
+
+        //Convert 1 string thanh so
+        var j = parseInt("10 10 10")
+        console.log("J = "+j)//sau convert no se lay so dau tien
+
+        var l =parseFloat("10.5 ABC")
+        console.log("J = "+j)//sau convert no se lay so dau tien
+
+        var i =parseFloat(" ABC 10.5")
+        console.log("i = "+i)//sau convert no se la NaN
+
+    </script>
+</body>
+</html>

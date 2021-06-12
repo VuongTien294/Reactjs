@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/category/listCategory.html">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/category/addCategory.html">Add
+                                    Category</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/category/listCategory.html">List
+                                    Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Product
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/product/addProduct.html">Add
+                                    Product</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/product/listProduct.html">List
+                                    Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/user/addUser.html">Add
+                                    User</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/user/listUser.html">List
+                                    User</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/post/addPost.html">Add
+                                    Post</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/post/listPost.html">List
+                                    Post</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Comment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/addComment.html">Add
+                                    Comment</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/listComment.html">List
+                                    Comment</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/login/login.html">Login</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label>Category</label>
+                <select id="categoryId" name="categoryId">
+
+                </select>
+            </div>
+            <div id="div-button-add" class="form-group">
+                <button class="btn btn-primary" type="button" id="add-btn" onclick="searchPost()">Get Post</button>
+            </div>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Images</th>
+                        <th>Category Id</th>
+                        <th>Category Name</th>
+                        <th>Created By</th>
+                        <th>Created Date</th>
+                        <th>OPTION</th>
+                    </tr>
+                </thead>
+                <tbody id="body-table">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2">
+            <form id="user-update">
+
+                <div class="col-md-3">
+                    <label>Id: </label>
+                    <input type="text" placeholder="nhap id update" name="id" id="updateid" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Title: </label>
+                    <input type="text" placeholder="nhap title update" name="title" id="updatetitle" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Description: </label>
+                    <input type="text" placeholder="nhap description update" name="description"
+                        id="updatedescription" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Category Id: </label>
+                    <input type="text" placeholder="nhap categoryId update" name="updatecategoryId" id="updatecategoryId" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Image:</label>
+                    <input  type="file" id="updateimageFile" name="updateimageFile"
+                        accept="image/*">
+                </div>
+
+                <input type="button" value="Update" onclick="submitUpdate()">
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const SEARCH_POST_URL = "https://learn-api.jmaster.io:8443/api/post/search"
+
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+        const SEARCH_CATE_URL = BASE_URL + "/category/search"
+        const categoryIdElement = document.getElementById("categoryId")
+
+        //Tim tat ca cac Category de chon
+
+        getAllCate = async () => {
+
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "search": {
+                    "value": "" //neu ko code start va value thi se tu dong tra ve la start :0,lenght:10
+                }
+            }
+
+            try {
+
+                let resp = await fetch(SEARCH_CATE_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            Accept: "*/*",
+                            "Content-Type": "application/json;charset=utf-8"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+                )
+                // console.log(resp)
+                if (resp.ok) {
+
+                    let responseDTO = await resp.json();
+                    console.log(responseDTO.data)
+                    listCategory = responseDTO.data
+                    loadCategory(listCategory)
+
+
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        function loadCategory(listCategory) {
+
+            listCategory.forEach(element => {
+                let optionElement = document.createElement("option");
+                optionElement.value = element.id;
+                optionElement.innerHTML = element.name;
+                categoryIdElement.appendChild(optionElement)
+            });
+        }
+
+        getAllCate()
+
+
+        //Tao bang
+        function createTable(listPost) {
+            let bodyTable = document.getElementById("body-table")
+            bodyTable.innerHTML = ""
+            for (let i = 0; i < listPost.length; i++) {
+                createTr(listPost[i])
+
+            }
+
+        }
+
+
+        //Ham tao them doi tuong
+        function createTr(post) {
+            let tdElement1 = document.createElement("td")
+            tdElement1.innerHTML = post.id
+            let tdElement2 = document.createElement("td")
+            tdElement2.innerHTML = post.title
+            let tdElement3 = document.createElement("td")
+            tdElement3.innerHTML = post.description
+
+            let tdElement4 = document.createElement("td")
+            
+            console.log("Do dai anh :"+post.images.length)
+            // tdElement4.href = "https://learn-api.jmaster.io:8443/image/"+post.images
+            if (post.images.length > 0) {
+                for (let i = 0; i < post.images.length; i++) {
+                    //tao the img
+                    let img = document.createElement('img')
+                    img.src = "https://learn-api.jmaster.io:8443/image/" + post.images[i];
+                    img.width = "100"
+                    //append vao td5
+                    tdElement4.appendChild(img)
+                }
+            }
+
+            let tdElement5 = document.createElement("td")
+            tdElement5.innerHTML = post.categoryId
+            let tdElement6 = document.createElement("td")
+            tdElement6.innerHTML = post.categoryName
+            let tdElement7 = document.createElement("td")
+            tdElement7.innerHTML = post.createBy
+            let tdElement8 = document.createElement("td")
+            tdElement8.innerHTML = post.createdDate
+
+            let trElement = document.createElement("tr")
+
+            let button1 = document.createElement("button");
+            let button2 = document.createElement("button");
+            let button3 = document.createElement("button");
+
+            button1.innerHTML = 'DELETE';
+            button1.className = "btn btn-primary"
+            button2.innerHTML = 'EDIT';
+            button2.className = "btn btn-primary"
+            button3.innerHTML = "VIEW"
+            button3.className = "btn btn-primary";
+
+            button1.onclick = function () {
+                deletePost(post.id)
+            }
+
+
+            button2.onclick = function () {
+
+                updatePost(post.id)  ///dua gia tri len form
+
+            }
+
+            button3.onclick = function () {
+                viewPost(post.id)
+            }
+
+
+            let tdElement9 = document.createElement("td");
+
+            tdElement9.appendChild(button1);
+            tdElement9.appendChild(button2);
+            tdElement9.appendChild(button3);
+
+            trElement.appendChild(tdElement1)
+            trElement.appendChild(tdElement2)
+            trElement.appendChild(tdElement3)
+            trElement.appendChild(tdElement4)
+            trElement.appendChild(tdElement5)
+            trElement.appendChild(tdElement6)
+            trElement.appendChild(tdElement7)
+            trElement.appendChild(tdElement8)
+            trElement.appendChild(tdElement9)
+
+            let tBodyElement = document.getElementById("body-table")
+            tBodyElement.appendChild(trElement)
+
+        }
+
+
+
+        searchPost = async () => {
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "categoryId": document.getElementById("categoryId").value
+            }
+            try {
+                resp = await fetch(SEARCH_POST_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            // "Authorization": "Bearer " + localStorage.getItem("token"),
+                            "Content-Type": "application/json;charset=utf-8"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+
+                )
+                if (resp.ok) {
+                    let data = await resp.json()
+                    console.log(data.data)
+                    const listPost = []
+                    data.data.forEach(element => {
+                        listPost.push(element)
+                    });
+                    createTable(listPost);
+                }
+            } catch (error) {
+                console.log(error)
+
+            }
+        }
+
+        //Xoa Post       
+        deletePost = async (id) => {
+            const DELETE_POST_URL ="https://learn-api.jmaster.io:8443/api/admin/post/delete?id="+id           
+            try {
+                let token = localStorage.getItem("token")
+                let resp = await fetch(DELETE_POST_URL,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            
+                            "Authorization": "Bearer " + token
+                        }
+                    }
+
+                )
+                console.log(resp)
+                if (resp.ok) {
+                    alert("Xoa thanh cong!")
+                   window.location.href="/Section 7-final/post/listPost.html"
+                }
+                else if (resp.status == 409) {
+                    alert("Xoa ko thanh cong.Danh muc da su dung!")
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        //View Post
+        viewPost = async (id) => {
+            console.log(id)
+            const VIEW_USER_URL = BASE_URL + "/post/" + id
+            try {
+                resp = await fetch(VIEW_USER_URL,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token")
+                        }
+
+                    }
+                )
+                if (resp.ok) {
+                    let data = await resp.json()
+                    console.log(data)
+                    console.log("Post Id :" + data.id)
+                    console.log("Title :" + data.title)
+                    console.log("Description :" + data.description)
+                    console.log("Category Id :" + data.categoryId)
+                    console.log("Create By :" + data.createBy)
+                    console.log("Created Date :" + data.createdDate)
+                    console.log("Images :" + data.images)
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        //Update Post
+        const UPDATE_POST_URL =" https://learn-api.jmaster.io:8443/api/admin/post/update"    
+
+        updatePost = async (id) => {
+            // console.log(id)
+
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "categoryId": document.getElementById("categoryId").value
+            }
+
+            try {
+
+                let resp = await fetch(SEARCH_POST_URL,
+                    {
+                        method: "POST",
+
+                        headers: {                         
+                            "Content-Type": "application/json;charset=utf-8"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+                )
+
+                if (resp.ok) {
+
+                    let responseDTO = await resp.json();
+
+                    const list = []
+                    responseDTO.data.forEach(element => {
+                        list.push(element)
+                    });
+                    console.log(list)
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].id === id) {
+                            console.log(id)
+                            let a = list[i].id
+                            let b = list[i].title
+                            let c = list[i].description
+                            let d = list[i].categoryId
+
+                            console.log(list[i])
+                            let idGan = document.getElementById("updateid")
+
+                            let titleGan = document.getElementById("updatetitle")
+
+                            let descriptionGan = document.getElementById("updatedescription")
+
+                            let categoryIdGan = document.getElementById("updatecategoryId")
+
+                            idGan.value = a
+                            console.log(a)
+                            titleGan.value = b
+                            console.log(b)
+                            descriptionGan.value = c
+                            categoryIdGan.value = d
+
+                        }
+
+                    }
+                    console.log("///////////////////////")
+
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        //Nhan nut sau do update api
+        
+        submitUpdate = async () => {
+            let token = localStorage.getItem("token")
+           
+            let formData = new FormData();
+            formData.append("id", document.getElementById("updateid").value)
+            formData.append("title", document.getElementById("updatetitle").value)
+            formData.append("description", document.getElementById("updatedescription").value)
+            formData.append("imageFile", document.getElementById("updateimageFile").files[0])
+            formData.append("categoryId", document.getElementById("updatecategoryId").value)
+            
+            try {
+
+                let request = await fetch(UPDATE_POST_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Bearer " + token,                           
+                        },
+                        body: formData
+                    }
+                )
+                console.log(request)
+                if (request.ok) {
+                    alert("Sua thanh cong!")
+                    window.location.href = href = "/Section 7-final/post/listPost.html"
+                } else if (request.status == 409) {
+                    alert("So post nay da duoc su dung!")
+                }
+            } catch (error) {
+                console.log(error)
+            }
+
+
+        }
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

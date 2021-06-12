@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giai phuong trinh bac 2</title>
+</head>
+<body>
+    <script>
+        function tinh(a , b ,c) {
+            var delta = b*b -4*a*c
+            if (delta < 0) {
+                return console.log("Phuong trinh vo nghiem!");
+            } else if(delta == 0) {
+                return console.log("Phuong trinh co nghiem kep : x ="+ -b/(2*a))
+            }else{
+                return console.log("Phuong trinh co 2 nghiem x1 ="+(-b+Math.sqrt(delta))/(2*a) +" va x2 = "+(-b-Math.sqrt(delta))/(2*a))
+            }
+        }
+
+        tinh(1,4,4)
+    </script>
+</body>
+</html>

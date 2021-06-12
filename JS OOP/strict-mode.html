@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Mode</title>
+</head>
+<body>
+    <script>
+        //Khong giong trong Java thi JS co the dung cac bien trung ten nhau dc nen se de gay nham lan
+        //VD
+        x =10
+        console.log(x)// ra 10
+
+        function tong(x,x) {
+            console.log(x+x) 
+        }
+        tong(1,1)//ra 2
+
+        //Để dễ phân biệt thì ta sẽ bật stric mode để phân biệt các biến trong JS
+        //VD
+        "use strict";//Bật chế độ strict mode(Tu dòng này trở đi JS sẽ check biến)
+        var x =10;
+        console.log(x)// ra 10
+        function tong(x,y) {
+            console.log(x+y) 
+        }
+        tong(1,1)//ra 2
+
+
+    </script>
+</body>
+</html>

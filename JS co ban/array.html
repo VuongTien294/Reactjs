@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <script>
+        //Khoi bao mang
+        var number=[1,5,6,8,10]
+
+        console.log(number[3])//Lay phan tu cua mang bang cach ten mang voi so index
+
+        console.log(number[number.length-1])//Lay phan tu cuoi cung bang cach lay do dai mang -1(Do dai mang la 5.Con index mang bat dau bang 0)
+
+        //Kieu du lieu cua mang
+        console.log(typeof(number))
+
+        //Sap xep mang
+        console.log(number.sort())
+
+        console.log("Sap xep mang tang dan")
+
+        number.sort (function compare(a , b) {
+            return a-b;
+        })
+
+        for(i=0;i<number.length;i++){
+           console.log(number[i])
+        }
+
+
+        //Tinh tong cua mang
+        var tong = 0;
+        for(i=0;i<number.length;i++){
+        //    tong +=number[i];
+        tong = tong + number[i];
+        }  
+
+        //Goi ket qua
+        console.log("Tong cua mnag la :"+tong)
+
+        //Them 1 phan tu vao cuoi mang
+        number.push(5)
+        //Xoa 1 phan tu cuoi trong mang
+        number.pop()
+        //Xoa phan tu dau mang
+        number.shift()
+        console.log(number)
+
+        //Gop mang
+        var NewArray = number.concat([1,2,3])
+
+        var newArray2 = NewArray.concat([4,5,6])
+        console.log(newArray2)
+
+        console.log(NewArray)
+    </script>
+</body>
+</html>

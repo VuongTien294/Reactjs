@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Funtion</title>
+</head>
+
+<body>
+    <!-- Viet funtion bang dau mui ten(=>) de ngan va nhanh hon-->
+</body>
+<script>
+    //Binh thuong chung ta se viet 
+    function tong(x, y) {
+        return x + y
+    }
+    //Gio ta se viet
+    var sum = (x, y) => {
+        return x + y
+    }
+    //Ham ten la sum truyen vao 2 tham so x,y va tra ve x+y
+    //hoac viet
+    var sum2 =(x,y)=>x+y //hoac (x+y) deu dc
+
+    console.log(sum(10,20))    
+    
+    var giaiThua = n =>{
+        tich =1
+        for (let i = 1; i <=n; i++) {
+            tich *=i
+            
+        }
+    console.log(n+"!="+tich)
+    }
+    giaiThua(5)
+
+    var info =()=>{
+        console.log("INFOOOOO")
+    }
+    info()
+
+</script>
+
+</html>

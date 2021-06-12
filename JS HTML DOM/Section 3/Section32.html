@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 3 tap 2</title>
+</head>
+
+<body>
+    <form id="filter-user-form">
+        <div>
+            <label>Name:</label>
+            <input type="text" id="search-name" value="" />
+        </div>
+        <div>
+            <button type="button" id="search-btn">Search</button>
+        </div>
+    </form>
+    <br>
+    <!-- Form them nguoi dung -->
+    <form id="add-user-form">
+        <div>
+            <label>Id:</label>
+            <input type="text" id="id" value="" />
+        </div>
+        <div>
+            <label>Name:</label>
+            <input type="text" id="name" value="" />
+        </div>
+        <div>
+            <label>Age:</label>
+            <input type="text" id="age" value="" />
+        </div>
+        <div>
+            <label>Address:</label>
+            <input type="text" id="address" value="" />
+        </div>
+        <div>
+            <button type="button" id="add-btn">Add</button>
+        </div>
+    </form>
+    <!-- Sử dụng HTML DOM để làm giao diện cho việc quản lý Người Dùng bao gồm Thêm/Sửa/Xoá/Tìm Kiếm: (Single Page) -->
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>OPTION</th>
+            </tr>
+        </thead>
+        <tbody id="body-table">
+            <!-- <tr>
+            <td>Js</td>
+            <td>123</td>
+        </tr> -->
+        </tbody>
+    </table>
+    <script>
+        let userObject = [{ id: 1, name: "Tien", age: 21, address: "Ha Dong" }, { id: 2, name: "Nga", age: 21, address: "Quang Ninh" }]
+
+
+        function createTr(user) {
+            let trElement = document.createElement("tr")
+
+            let tdElement1 = document.createElement("td")
+            tdElement1.innerHTML = user.id
+            let tdElement2 = document.createElement("td")
+            tdElement2.innerHTML = user.name
+            let tdElement3 = document.createElement("td")
+            tdElement3.innerHTML = user.age
+            let tdElement4 = document.createElement("td")
+            tdElement4.innerHTML = user.address
+            let button1 =document.createElement("button")
+            button1.innerHTML="Edit"
+            let button2 =document.createElement("button")
+            button2.innerHTML="Delete"
+            let tdElement5 =document.createElement("td")
+            tdElement5.appendChild(button1)
+            tdElement5.appendChild(button2)
+
+            trElement.appendChild(tdElement1)
+            trElement.appendChild(tdElement2)
+            trElement.appendChild(tdElement3)
+            trElement.appendChild(tdElement4)
+            trElement.appendChild(tdElement5)
+
+            let tBody = document.getElementById("body-table")
+            tBody.appendChild(trElement)
+
+        }
+
+        function createTable(users) {
+            let bodyTable = document.getElementById("body-table")
+            bodyTable.innerHTML = ""
+            for (let i = 0; i < users.length; i++) {
+                createTr(users[i])
+
+            }
+        }
+        createTable(userObject)
+
+        //Tim ten nguoi dung
+        let searchBtn = document.getElementById("search-btn")
+        let newArray = []
+        
+        searchBtn.addEventListener("click", function filterName() {
+            let searchName = document.getElementById("search-name").value
+            for (let i = 0; i < userObject.length; i++) {
+                let Name = userObject[i].name
+                let check = Name.indexOf(searchName)
+                if (check !== -1) {
+                    newArray.push(userObject[i])
+                }
+            }
+            createTable(newArray)
+        })
+        //Them nguoi dung
+
+        let addBtn = document.getElementById("add-btn")
+        addBtn.onclick = function () {
+            let idP = document.getElementById("id").value
+            let nameP = document.getElementById("name").value
+            let ageP = document.getElementById("age").value
+            let addressP = document.getElementById("address").value
+            let person = {
+                id: idP,
+                name: nameP,
+                age: ageP,
+                address: addressP
+            }
+            userObject.push(person)
+            createTable(userObject)
+        }
+    </script>
+</body>
+
+</html>

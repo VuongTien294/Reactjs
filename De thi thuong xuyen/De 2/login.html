@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset = UTF-8">
+</head>
+
+<body>
+
+
+    <form>
+        <script language=javascript>
+            v = 0
+            function kiemtra1() {
+                let username = document.getElementById("a")
+                console.log(username.value)
+                let password = document.getElementById("b")
+                console.log(password.value)
+                if (username.value === "Admintrator" && password.value === "Admin") {
+                    c = document.getElementById("noidung")
+                    c.innerHTML = "Nhap dung!"
+                } else {
+                    v++;
+                    c = document.getElementById("noidung")
+                    c.innerHTML = "Nhap sai!"
+
+                    if (v > 2) {
+                        let f = document.getElementById("a")
+                        let g = document.getElementById("b")
+                        f.disabled = true;
+                        g.disabled = true;
+                    }
+                }
+
+
+
+            }
+        </script>
+        <p>
+            <b>User:</b><input type="text" id="a" name="txtuser" size=20 maxlength=20>
+        </p>
+
+        <p><b>Password:</b> <input id="b" type="password" name="txtpass" size=20 maxlength=20></p>
+        <div>
+            <p id="noidung"></p>
+        </div>
+        <!-- <p id="noidung"></p> -->
+
+        <input type="button" value="Dang Nhap" size=20 maxlength=20 onclick="return kiemtra1();"></p>
+
+    </form>
+</body>
+
+</html>

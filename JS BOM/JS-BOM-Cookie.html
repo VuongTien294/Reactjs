@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS BOM Cookie</title>
+</head>
+
+<body>
+    <!-- Cho phep luu thong tin tam thoi theo thoo gian.Bao mat theo domain,duong dan,luu thong tin ve dang nhap,truy cap website hay quang cao cua google -->
+
+    <script>
+        let cookies = document.cookie
+        console.log(cookies)
+
+        function createCookies(name, value, expDay) {//expDay la ngay het han
+            let now = new Date()
+            now.setTime(now.getTime() + expDay * 60 * 60 * 1000)
+            document.cookie = name + "=" + value + ";expires=" + now.toUTCString() + ";path=/"
+        }
+
+        function deleteCookies(name) {//Xoa cookies chi can set ngay het han thanh qua khu la xong(Xoa cookies thi xoa theo ten)
+            let now = new Date()
+            now.setTime(now.getTime() - expDay * 60 * 60 * 1000 * 10000)
+            document.cookie = name + "=;expires=" + now.toUTCString() + ";path=/"
+        }
+
+        function getCookie(name) {
+            let cookieStr = document.cookie;
+            if (cookieStr) {
+                let cookieArray = cookieStr.split(";")
+                for (let i = 0; i < cookieArray.length; i++) {
+                    let keyValueArr = cookieArray[i].split("=")
+                    if (keyValueArr[0].trim() == name) {
+                        return cookieArray[i];
+                    }
+                }
+            }
+        }
+        createCookie("trackingId", "123456")
+        deleteCookies("HelloCookies")
+        getCookie("trackingId")
+    </script>
+</body>
+
+</html>

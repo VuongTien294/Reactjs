@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Comment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/category/listCategory.html">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/category/addCategory.html">Add
+                                    Category</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/category/listCategory.html">List
+                                    Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Product
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/product/addProduct.html">Add
+                                    Product</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/product/listProduct.html">List
+                                    Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/user/addUser.html">Add
+                                    User</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/user/listUser.html">List
+                                    User</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/post/addPost.html">Add
+                                    Post</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/post/listPost.html">List
+                                    Post</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Comment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/addComment.html">Add
+                                    Comment</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/listComment.html">List
+                                    Comment</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/login/login.html">Login</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" id="nameCate" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" onclick="searchCate()" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" id="nameCate" placeholder="Search"
+            aria-label="Search">
+        <button class="btn btn-outline-success" onclick="searchCate()" type="button">Search</button>
+    </form> -->
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label>Post Id</label>
+                <input type="text" placeholder="nhap id cua post can tim" name="postid" id="postid" />
+            </div>
+            <div id="div-button-add" class="form-group">
+                <button class="btn btn-primary" type="button" id="searchPostId" onclick="searchComment()">Get
+                    Post</button>
+            </div>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Content</th>
+                        <th>User Id</th>
+                        <th>Created Date</th>
+                        <th>Post Id</th>
+                        <th>OPTION</th>
+                    </tr>
+                </thead>
+                <tbody id="body-table">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        const SEARCH_COMMENT_URL = "https://learn-api.jmaster.io:8443/api/comment/search"
+
+        function createTable(listComment) {
+            let bodyTable = document.getElementById("body-table")
+            bodyTable.innerHTML = ""
+            for (let i = 0; i < listComment.length; i++) {
+                createTr(listComment[i])
+
+            }
+
+        }
+
+
+        //Ham tao them doi tuong
+        function createTr(comment) {
+            let tdElement1 = document.createElement("td")
+            tdElement1.innerHTML = comment.id
+            let tdElement2 = document.createElement("td")
+            tdElement2.innerHTML = comment.content
+            let tdElement3 = document.createElement("td")
+            tdElement3.innerHTML = comment.userId
+            let tdElement4 = document.createElement("td")
+            tdElement4.innerHTML = comment.createdDate
+            let tdElement5 = document.createElement("td")
+            tdElement5.innerHTML = comment.postId
+
+            let trElement = document.createElement("tr")
+
+            let button1 = document.createElement("button");
+
+
+            button1.innerHTML = 'DELETE';
+            button1.className = "btn btn-primary"
+
+            button1.onclick = function () {
+                deleteComment(comment.id)
+            }
+
+
+            let tdElement6 = document.createElement("td");
+
+            tdElement6.appendChild(button1);
+
+            trElement.appendChild(tdElement1)
+            trElement.appendChild(tdElement2)
+            trElement.appendChild(tdElement3)
+            trElement.appendChild(tdElement4)
+            trElement.appendChild(tdElement5)
+            trElement.appendChild(tdElement6)
+
+            let tBodyElement = document.getElementById("body-table")
+            tBodyElement.appendChild(trElement)
+
+        }
+
+        searchComment = async () => {
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "postId": document.getElementById("postid").value
+            }
+            try {
+                resp = await fetch(SEARCH_COMMENT_URL,
+                    {
+                        method: "POST",
+                        headers: {
+
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+
+                )
+                if (resp.ok) {
+                    let data = await resp.json()
+                    console.log(data.data)
+                    const listComment = []
+                    data.data.forEach(element => {
+                        listComment.push(element)
+                    });
+                    createTable(listComment);
+                }
+            } catch (error) {
+
+            }
+        }
+
+        //Xoa comment
+        
+        deleteComment = async (id) => {
+            const DELETE_COMMENT_URL ="https://learn-api.jmaster.io:8443/api/admin/comment/delete?id="+id
+            
+            try {
+                let token = localStorage.getItem("token")
+                let resp = await fetch(DELETE_COMMENT_URL,
+                    {
+                        method: "DELETE",
+                        headers: {
+
+                            "Authorization": "Bearer " + token
+                        }
+                    }
+
+                )
+                console.log(resp)
+                if (resp.ok) {
+                    alert("Xoa thanh cong!")
+                    window.location.href = "/Section 7-final/comment/listComment.html"
+                }
+                else if (resp.status == 409) {
+                    alert("Xoa ko thanh cong.Danh muc da su dung!")
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

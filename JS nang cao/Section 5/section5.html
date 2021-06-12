@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 5</title>
+</head>
+
+<body>
+    <script type="module">
+
+        //Bai1 :Khai báo hàm tổng sử dụng arguments để có thể tính tổng của nhiều tham số nhập vào.
+        function tong() {
+            tong = 0
+            for (let i = 0; i < arguments.length; i++) {
+                tong += arguments[i]
+
+            }
+            return tong
+        }
+        var s = tong(1, 2, 3, 4, 5, 6)
+        console.log("Tong la: " + s)
+
+        //Bai2:Viết một hàm hiển thị giá tiền kèm với ký hiệu tiền tệ, cho phép người dùng truyền vào 1 tham số 1 là số tiền,
+        // và tham số 2 là đơn vị tiền tệ.
+        function money(x, y) {
+            if (y === undefined) {
+                y = "$"
+            }
+            return console.log("So tien la : " + x + y)
+        }
+        money(1)
+        money(2, "dong")
+
+        //Bai 3: Gọi hàm info cho p2. (sử dụng call và apply)
+
+        //Sử dụng bind để gọi hàm info cho p2.
+
+        //Sử dụng hàm setTimeout để gọi hàm callback info cho p2.
+        let p1 = {
+            id: 1, name: 'Iphone', price: 20000000, info: function () {
+                console.log("id: " + this.id + " name: " + this.name + " price: " + this.price)
+            }
+        }
+
+        let p2 = { id: 2, name: "sam sung", price: 15000000 }
+
+
+
+
+        //Bai4:tạo file student.js có class Person(id, name, address) và hàm info in ra console thông tin,
+        // class Student extends của Person và có thuộc tính là marjor (chuyên khoa). override lại hàm info. export class Student
+        //import main tu main.js
+          import * as main from './js/main.js'
+    </script>
+</body>
+
+</html>

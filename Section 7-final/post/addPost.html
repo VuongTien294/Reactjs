@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/category/listCategory.html">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/category/addCategory.html">Add
+                                    Category</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/category/listCategory.html">List
+                                    Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Product
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/product/addProduct.html">Add
+                                    Product</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/product/listProduct.html">List
+                                    Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/user/addUser.html">Add
+                                    User</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/user/listUser.html">List
+                                    User</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/post/addPost.html">Add
+                                    Post</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/post/listPost.html">List
+                                    Post</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Comment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/addComment.html">Add
+                                    Comment</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/listComment.html">List
+                                    Comment</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/login/login.html">Login</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <form id="form_post" enctype="multipart/form-data">
+        <div id="form_post_div">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="title" name="title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" id="description" name="description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="formFile" class="form-label">Image File</label>
+                <input class="form-control" type="file" id="imageFile" name="imageFile" class="form-control"
+                    accept="image/*">
+            </div>
+            <div id="images-div">
+                <img id="img" />
+                <input hidden id="images" />
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="categoryId" name="categoryId">
+
+                </select>
+            </div>
+        </div>
+        <div id="div-button-add" class="form-group">
+            <button class="btn btn-primary" type="button" id="add-btn" onclick="addFormPost()">Add</button>
+        </div>
+    </form>
+
+    <script>
+        //Truoc tien phai tim tat ca cac category de in ra man hinh trc
+
+
+
+        /////
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+        const SEARCH_CATE_URL = BASE_URL + "/category/search"
+        const categoryIdElement = document.getElementById("categoryId")
+
+
+        getAllCate = async () => {
+
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "search": {
+                    "value": "" //neu ko code start va value thi se tu dong tra ve la start :0,lenght:10
+                }
+            }
+
+            try {
+
+                let resp = await fetch(SEARCH_CATE_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            Accept: "*/*",
+                            "Content-Type": "application/json;charset=utf-8"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+                )
+                // console.log(resp)
+                if (resp.ok) {
+
+                    let responseDTO = await resp.json();
+                    console.log(responseDTO.data)
+                    listCategory = responseDTO.data
+                    loadCategory(listCategory)
+
+
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        function loadCategory(listCategory) {
+
+            listCategory.forEach(element => {
+                let optionElement = document.createElement("option");
+                optionElement.value = element.id;
+                optionElement.innerHTML = element.name;
+                categoryIdElement.appendChild(optionElement)
+            });
+        }
+
+        getAllCate()
+
+        const ADD_FORM_POST_URL = BASE_URL + "/member/post/add"
+
+        addFormPost = async () => {
+            const ADD_FORM_POST_URL = BASE_URL + "/member/post/add"
+
+
+            let formData = new FormData();
+
+            formData.append("title", document.getElementById("title").value)
+            formData.append("description", document.getElementById("description").value)
+            formData.append("imageFile", document.getElementById("imageFile").files[0])
+            formData.append("categoryId", document.getElementById("categoryId").value)
+
+            try {
+
+                let resp = await fetch(ADD_FORM_POST_URL,
+                    {
+                        method: 'POST',
+
+                        headers: {
+                            Accept: '*/*',
+                            "Authorization": "Bearer " + localStorage.getItem("token")                          
+                        },
+                        body: formData
+                    }
+                )
+                if (resp.ok) {
+                    alert("Ban da them post thanh cong!")
+                    let responseDTO = await resp.json()
+                    console.log(responseDTO)
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

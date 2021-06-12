@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let-Const</title>
+</head>
+
+<body>
+    <script>
+        //CONST
+        const PI = 3.14//khai bao ham con nen viet hoa de phan biet
+        function tong(x, y) {
+            return PI+x + y
+        }
+
+        //console.log(x)// se bao la not defided do bien x chi dc dung trong ham tong(x,y) thoi ma ko dung dc ben ngoai nen ham const sinh ra de dung vs moi thu ben ngoai
+        console.log(tong(4,1))
+
+        //khai bao ham const vs doi tuong
+        const person = {name:"Tien",age:21}
+
+        //co the gan thuoc tinh cho doi tuong person nhung ko the gan no cho 1 doi tuong khac VD nhu person={}
+        person.name="Tien dep trai"
+        console.log(person)
+
+        //Khai bao ham const vs mang
+        const arr=[1,3,5]
+        arr.push(8)//Them 8 vao mang
+        arr[0]=4//Thay doi gia tri 
+        console.log(arr)
+
+
+        //LET
+        function vongLap() {
+            var i =10
+            for (i=0; i < 30; i++) {
+                console.log(i)//in ra tu 0 den 29
+                
+            }
+            console.log("___"+i)//in ra 30
+        }
+
+        function vongLap() {
+            var i =10
+            for (let i=0; i < 30; i++) {// dung let thi bien i chi dc dung ben trong vong lap
+                console.log(i)//in ra tu 0 den 29
+                
+            }
+            console.log("___"+i)//van in ra 10
+        }
+
+        vongLap()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM CSS</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .fontStyle {
+            font-style: italic;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#">Home</a><br>
+    <a href="#">Category</a>
+    <p>Trung Tam Java</p>
+
+    <script>
+        let aList =document.getElementsByTagName("a")
+        for (let i = 0; i < array.length; i++) {
+            aList[i].style.color ="red"
+            aList[i].style.fontSize="20px"
+            
+        }
+
+        let pList =document.getElementsByTagName("p")
+        //pList[0].classList="center fontStyle"
+        //pList[0].setAttribute("class","center fontStyle")
+        pList[0].className="center fontStyle"
+        //3 cach tren kq cho nhu nhau
+    </script>
+</body>
+
+</html>

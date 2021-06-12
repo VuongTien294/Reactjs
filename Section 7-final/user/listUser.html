@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/category/listCategory.html">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/category/addCategory.html">Add
+                                    Category</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/category/listCategory.html">List
+                                    Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Product
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/product/addProduct.html">Add
+                                    Product</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/product/listProduct.html">List
+                                    Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/user/addUser.html">Add
+                                    User</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/user/listUser.html">List
+                                    User</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/post/addPost.html">Add
+                                    Post</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/post/listPost.html">List
+                                    Post</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Comment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/addComment.html">Add
+                                    Comment</a></li>
+                            <li><a class="dropdown-item" href="/Section 7-final/comment/listComment.html">List
+                                    Comment</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="/Section 7-final/login/login.html">Login</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" id="nameCate" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" onclick="searchCate()" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-10">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>Phone</th>
+                        <th>Repassword</th>
+                        <th>Address</th>
+                        <th>Enabled</th>
+                        <th>Device Id</th>
+                        <th>Created Date</th>
+                        <th>Created By</th>
+                        <th>Roles</th>
+                        <th>Created By Id</th>
+                        <th>OPTION</th>
+                    </tr>
+                </thead>
+                <tbody id="body-table">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2">
+            <form id="user-update">
+
+                <div class="col-md-3">
+                    <label>Id: </label>
+                    <input type="text" placeholder="nhap id update" name="id" id="updateid" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Name: </label>
+                    <input type="text" placeholder="nhap name update" name="name" id="updatename" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Phone: </label>
+                    <input type="text" placeholder="nhap phone update" name="phone" id="updatephone" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>Address: </label>
+                    <input type="text" placeholder="nhap address update" name="address" id="updateaddress" />
+                </div>
+
+                <input type="button" value="Update" onclick="submitUpdate()">
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+        const SEARCH_URL = "https://learn-api.jmaster.io:8443/api/admin/accounts"
+
+        function createTable(listUser) {
+            let bodyTable = document.getElementById("body-table")
+            bodyTable.innerHTML = ""
+            for (let i = 0; i < listUser.length; i++) {
+                createTr(listUser[i])
+
+            }
+
+        }
+
+
+        //Ham tao them doi tuong
+        function createTr(user) {
+            let tdElement1 = document.createElement("td")
+            tdElement1.innerHTML = user.id
+            let tdElement2 = document.createElement("td")
+            tdElement2.innerHTML = user.name
+            let tdElement3 = document.createElement("td")
+            tdElement3.innerHTML = user.password
+            let tdElement4 = document.createElement("td")
+            tdElement4.innerHTML = user.phone
+            let tdElement5 = document.createElement("td")
+            tdElement5.innerHTML = user.repassword
+            let tdElement6 = document.createElement("td")
+            tdElement6.innerHTML = user.address
+            let tdElement7 = document.createElement("td")
+            tdElement7.innerHTML = user.enabled
+            let tdElement8 = document.createElement("td")
+            tdElement8.innerHTML = user.deviceId
+            let tdElement9 = document.createElement("td")
+            tdElement9.innerHTML = user.createdDate
+            let tdElement10 = document.createElement("td")
+            tdElement10.innerHTML = user.createdBy
+            let tdElement11 = document.createElement("td")
+            tdElement11.innerHTML = user.roles
+            let tdElement12 = document.createElement("td")
+            tdElement12.innerHTML = user.createdById
+
+            let trElement = document.createElement("tr")
+
+            let button1 = document.createElement("button");
+            let button2 = document.createElement("button");
+            let button3 = document.createElement("button");
+
+            button1.innerHTML = 'DELETE';
+            button1.className = "btn btn-primary"
+            button2.innerHTML = 'EDIT';
+            button2.className = "btn btn-primary"
+            button3.innerHTML = "VIEW"
+            button3.className = "btn btn-primary";
+
+            button1.onclick = function () {
+                deleteUser(user.id)
+            }
+
+
+            button2.onclick = function () {
+
+                updateUser(user.id)  ///dua gia tri len form
+
+            }
+
+            button3.onclick = function () {
+                viewUser(user.id)
+            }
+
+
+            let tdElement13 = document.createElement("td");
+
+            tdElement13.appendChild(button1);
+            tdElement13.appendChild(button2);
+            tdElement13.appendChild(button3);
+
+            trElement.appendChild(tdElement1)
+            trElement.appendChild(tdElement2)
+            trElement.appendChild(tdElement3)
+            trElement.appendChild(tdElement4)
+            trElement.appendChild(tdElement5)
+            trElement.appendChild(tdElement6)
+            trElement.appendChild(tdElement7)
+            trElement.appendChild(tdElement8)
+            trElement.appendChild(tdElement9)
+            trElement.appendChild(tdElement10)
+            trElement.appendChild(tdElement11)
+            trElement.appendChild(tdElement12)
+
+            trElement.appendChild(tdElement13)
+
+            let tBodyElement = document.getElementById("body-table")
+            tBodyElement.appendChild(trElement)
+
+        }
+
+        searchUser = async () => {
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "search": {
+                    "value": ""
+                }
+            }
+            try {
+                resp = await fetch(SEARCH_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token"),
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+
+                )
+                if (resp.ok) {
+                    let data = await resp.json()
+                    console.log(data.data)
+                    const listUser = []
+                    data.data.forEach(element => {
+                        listUser.push(element)
+                    });
+                    createTable(listUser);
+                }
+            } catch (error) {
+
+            }
+        }
+        searchUser()
+
+        //VIEW USER BY ID
+        viewUser = async (id) => {
+            console.log(id)
+            const VIEW_USER_URL = BASE_URL + "/admin/user/" + id
+            try {
+                resp = await fetch(VIEW_USER_URL,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token")
+                        }
+
+                    }
+                )
+                if (resp.ok) {
+                    let data = await resp.json()
+                    console.log(data)
+                    console.log("Ten nguoi dang nhap :" + data.name)
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+
+        //UPDATE USER 
+        updateUser = async (id) => {
+            // console.log(id)
+
+            let requestBody = {
+                "start": 0,
+                "length": 100,
+                "search": {
+                    "value": "" //neu ko code start va value thi se tu dong tra ve la start :0,lenght:10
+                }
+            }
+
+            try {
+
+                let resp = await fetch(SEARCH_URL,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token"),
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+                )
+
+                if (resp.ok) {
+
+                    let responseDTO = await resp.json();
+
+                    const list = []
+                    responseDTO.data.forEach(element => {
+                        list.push(element)
+                    });
+                    console.log(list)
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].id === id) {
+                            console.log(id)
+                            let a = list[i].id
+                            let b = list[i].name
+                            let c = list[i].phone
+                            let d = list[i].address
+
+                            console.log(list[i])
+                            let idGan = document.getElementById("updateid")
+
+                            let nameGan = document.getElementById("updatename")
+
+                            let phoneGan = document.getElementById("updatephone")
+
+                            let addressGan = document.getElementById("updateaddress")
+
+                            idGan.value = a
+                            console.log(a)
+                            nameGan.value = b
+                            console.log(b)
+                            phoneGan.value = c
+                            addressGan.value = d
+
+                        }
+
+                    }
+                    console.log("///////////////////////")
+
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        //Nhan nut sau do update api
+        const UPDATE_USER_URL = BASE_URL + "/admin/user/update"
+        submitUpdate = async () => {
+            let token = localStorage.getItem("token")
+            let requestBody = {
+                "id": document.getElementById("updateid").value,
+                "name": document.getElementById("updatename").value,
+                "phone": document.getElementById("updatephone").value,
+                "address": document.getElementById("updateaddress").value
+            }
+            console.log(requestBody)
+            try {
+
+                let request = await fetch(UPDATE_USER_URL,
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Authorization": "Bearer " + token,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+                )
+                console.log(request)
+                if (request.ok) {
+                    alert("Sua thanh cong!")
+                    // let respon = await request.json()
+                    // console.log(respon)
+                    //  await listCategory()
+                    window.location.href = href = "/Section 7-final/user/listUser.html"
+                } else if (request.status == 409) {
+                    alert("So dien thoai nay da duoc su dung!")
+                }
+            } catch (error) {
+                console.log(error)
+            }
+
+
+        }
+
+        //Xoa User
+        deleteUser = async (id) => {
+            const DEL_USER_URL = BASE_URL + "/admin/user/delete?id=" + id
+            try {
+                let token = localStorage.getItem("token")
+                let resp = await fetch(DEL_USER_URL,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            Accept: "*/*",
+                            "Authorization": "Bearer " + token
+                        }
+                    }
+
+                )
+                console.log(resp)
+                if (resp.ok) {
+                    alert("Xoa thanh cong!")
+                   window.location.href="/Section 7-final/user/listUser.html"
+                }
+                else if (resp.status == 409) {
+                    alert("Xoa ko thanh cong.Danh muc da su dung!")
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

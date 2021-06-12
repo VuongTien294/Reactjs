@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Properties Access</title>
+</head>
+
+<body>
+    <script>
+        var personA = {
+            name: "A",
+            age: 20,
+            address: 'Ha Noi',
+            talk: function () {
+                return this.name + " talk about " + this.address + " . age " + this.age
+            }
+        }
+
+        console.log(personA.name)
+        console.log(personA.talk())
+
+        const { name, age } = personA
+        console.log(name)
+        console.log(age)
+
+        let { talk } = personA
+        console.log(talk.bind(personA)())
+
+        const { address, ...other } = personA
+        console.log(address)
+        console.log(other)
+        console.log(other.name)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 1</title>
+</head>
+<body>
+    <!-- Giả sử có hàm let hello = () => "Hello ES6 "
+và let err = () => throw "Err"
+
+Chúng ta sẽ gọi 2 hàm này sau 1s, giả lặp bởi hàm setTimeout(()=>{let kq = hello(),... } , 1000);
+Sử dụng Promise:
+Đọc kết quả trả về với then, và catch trong trường hợp lỗi cho 2 hàm trên.
+
+Sử dụng promise all để kiểm tra đồng thời 2 hàm xem thành công hay thất bại. -->
+
+<script>
+//Đọc kết quả trả về với then, và catch trong trường hợp lỗi cho 2 hàm trên.
+    let promises = new Promise(function (resolve,reject) {
+        setTimeout(() => {
+            resolve(("Hello"),1000)
+        })
+        // setTimeout(() => {
+        //     reject(("Error"),1000)
+        // })
+    })
+
+    promises.then(
+        (resp)=>{
+            console.log(resp)
+        }
+    ).catch(
+        (err)=>{
+            console.log(err)
+        }
+    )
+
+    //Dung promises- all
+    let promises2 = new Promise(function (resolve,reject) {
+        setTimeout(() => {
+            resolve(("Hello 2"),1000)
+        })
+        // setTimeout(() => {
+        //     reject(("Error"),1000)
+        // })
+    })
+    let promises3 = new Promise(function (resolve,reject) {
+        setTimeout(() => {
+            resolve(("Hello 3"),1000)
+        })
+        // setTimeout(() => {
+        //     reject(("Error"),1000)
+        // })
+    })
+    let promises4 = new Promise(function (resolve,reject) {
+        setTimeout(() => {
+            resolve(("Hello 4"),1000)
+        })
+        // setTimeout(() => {
+        //     reject(("Error"),1000)
+        // })
+    })
+    Promise.all([promises2,promises3,promises4]).
+    then(
+        (resp)=>{
+            console.log(resp)
+        }
+    ).catch(
+        (err)=>{
+            console.log(err)
+        }
+    )
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+
+
+        const DEL_CATE_URL = BASE_URL + "/admin/category/delete?id=11"
+        deleteCate = async () => {
+            try {
+                let token = btoa("0123456789:123456")
+                let response = await fetch(DEL_CATE_URL, {
+                    method: 'DELETE',
+                    headers: {
+                        Accept: "*/*",
+                        "Content-Type": "application/json;charset=utf-8",
+                        "Authorization": "Basic " + token
+                    },
+                })
+
+                if (response.ok) {
+                    console.log("Success")
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        deleteCate()
+
+
+    </script>
+</body>
+
+</html>

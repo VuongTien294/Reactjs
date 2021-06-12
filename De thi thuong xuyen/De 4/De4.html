@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3 border bg-light">Nhap 1 tu tieng anh</div>
+                <select id="tudien">
+                    <option value=" ">Hay chon mot tu </option>
+                    <option value="hello">hello</option>
+                    <option value="goodbye">goodbye</option>
+                    <option value="hi">hi</option>
+                    <option value="dog">dog</option>
+                    <option value="cat">cat</option>
+                    <option value="snack">snack</option>
+                    <option value="bird">bird</option>
+                    <option value="octopus">octopus</option>
+                    <option value="spider">spider</option>
+                    <option value="phone">phone</option>
+                </select>
+                <button type="button" onclick="kiemtra()">Kiem tra</button>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">Ket qua</div>
+                <textarea id="b"></textarea>
+            </div>
+        </div>
+    </div>
+    <script>
+        var kiemtra=()=>{
+            let arrayNghia =[{id : "hello",nghia :"Xin Chao"},{id: "goodbye",nghia:"Tam Biet"},{id: "hi",nghia:"Chao"}
+            ,{id: "dog",nghia:"Con Cho"},{id: "cat",nghia:"Con Meo"},{id: "snack",nghia:"Con Ran"},
+            {id: "bird",nghia:"Con Chim"},{id: "octopus",nghia:"Con Bach Tuoc"},{id: "spider",nghia:"Con Nhen"},{id: "phone",nghia:"Dien thoai"}]
+            let tudien = document.getElementById("tudien")
+            
+            if (tudien.value !=null && tudien.value != " ") {
+                console.log(tudien)
+                for (let i = 0; i < arrayNghia.length; i++) {                 
+                    if(arrayNghia[i].id == tudien.value){               
+                     document.getElementById("b").innerHTML = arrayNghia[i].nghia
+                    }               
+                }
+            }else{
+                alert("Ban chua chon tu !")
+                window.location.reload()
+            }
+        }
+    </script>
+</body>
+
+</html>

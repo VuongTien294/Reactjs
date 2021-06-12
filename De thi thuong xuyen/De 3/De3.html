@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div>
+        <label>So thich</label>
+        <input type="checkbox" id="sothich" name="sothich" value="Dabong">
+        <label>Đá bóng </label><br>
+
+        <input type="checkbox" id="sothich" name="sothich" value="Dacau">
+        <label>Đá cầu</label><br>
+
+        <input type="checkbox" id="sothich" name="sothich" value="Tenis">
+        <label>Tenis</label>
+
+        <input type="checkbox" id="sothich" name="sothich" value="Caulong">
+        <label>Cầu lông</label>
+
+        <input type="checkbox" id="sothich" name="sothich" value="Bongban">
+        <label>Bóng bàn</label>
+    </div>
+    <div>
+        <label for="">Ngon ngu yeu thich</label>
+        <input type="radio" name="favourite" value="Anh">
+        <label>Anh</label><br>
+        <input type="radio" name="favourite" value="Phap">
+        <label>Phap</label><br>
+        <input type="radio" name="favourite" value="Duc">
+        <label>Duc</label>
+        <input type="radio" name="favourite" value="Trung">
+        <label>Trung</label>
+        <input type="radio" name="favourite" value="Nga">
+        <label>Nga</label>
+    </div>
+    <div>
+        <button onclick="kiemtra()">Kiem tra</button>
+    </div>
+    
+
+    <script>
+        let kiemtra = () => {
+            var sothich = document.getElementsByName("sothich")
+            var ngonngu = document.getElementsByName("favourite")
+            console.log(typeof(sothich))
+            console.log(sothich.length)
+            let resultSothich = []
+            let resultNgonngu =[]
+            for (let i = 0; i < sothich.length; i++) {
+                
+             if (sothich[i].checked) {
+               
+                 resultSothich.push(sothich[i].value)
+                 
+                 if (resultSothich.length > 3) {
+                    console.log("Vao if 2")
+                     alert("Khong duoc nhap qua 3 gia tri !")
+                     window.location.reload()
+                 }
+             }
+            }
+            for (let z = 0; z < ngonngu.length; z++) {
+                if(ngonngu[z].checked){
+                    resultNgonngu.push(ngonngu[z].value)
+                }
+                
+            }
+
+            if (resultSothich.length <= 3) {
+                alert("So thich cua ban la :" + resultSothich+"\nNgon ngu yeu thich : "+resultNgonngu)
+            }
+           
+        }
+
+    </script>
+</body>
+</html>

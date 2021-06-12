@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error,Try-catch</title>
+</head>
+
+<body>
+    <script>
+        function chia(x, y) {
+            if (y == 0) {
+                throw "y = 0"
+            }
+            return x / y;
+        }
+
+        try {
+            // var thuong = chia(10,0)//se ban ra exception y = 0
+            // console.log(thuong)
+            var thuong2 = chia(10, 5)//ra 2
+            console.log(thuong2)
+        } catch (error) {
+            console.log(error)
+
+        }
+
+        try {
+            var thuong = chia(10, 0)//se ban ra exception y = 0
+            console.log(thuong)
+
+        } catch (error) {
+            console.log(error)//dieu kien se nhay vao exception o tren roi in ra y = 0 cua ham chia(x,y)
+
+        }finally{//neu loi hay ko loi deu nhay vao day 1 lan
+            console.log("Finally")
+        }
+
+
+    </script>
+</body>
+
+</html>

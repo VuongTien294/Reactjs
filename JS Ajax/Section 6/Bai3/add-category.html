@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+</head>
+
+<body>
+    <script>
+        const BASE_URL = "https://learn-api.jmaster.io:8443/api"
+        const ADD_CATEGORY_URL = BASE_URL + "/admin/category/add"
+
+        // const BASE_URL = "https://localhost:8080"
+        // const ADD_CATEGORY_URL = BASE_URL + "/user/add"
+
+        let requestBody = {
+            "name": "TEST 2"
+        }
+
+        addCategory = async () => {
+            try {
+                // let token = btoa("0123456789:123456")
+                let token = btoa("1:1")
+                
+                let resp = await fetch(ADD_CATEGORY_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Basic " + token,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(requestBody)
+                    }
+                )
+
+                console.log(resp)
+                if (resp.ok) {
+                    let responseDTO = await resp.json()
+                    console.log(responseDTO)
+                    console.log(typeof(responseDTO))
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        // addCategory()
+
+        //form url encode
+        const ADD_FORM_CATEGORY_URL = BASE_URL + "/admin/category/add-form"
+
+
+        addFormCategory = async () => {
+            try {
+                let token = btoa("0123456789:123456")
+                let resp = await fetch(ADD_FORM_CATEGORY_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Basic " + token,
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: "name=Ahihi"//neu co id thi se la "name=TEST FORM URL 10&id=10"
+                    }
+                )
+
+                console.log(resp)
+                if (resp.ok) {
+                    let responseDTO = await resp.json()
+                    console.log(responseDTO)
+                    // console.log(typeof(responseDTO))
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        addFormCategory()//da test va oks
+    </script>
+</body>
+
+</html>

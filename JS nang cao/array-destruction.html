@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Destruction</title>
+</head>
+<body>
+    <!-- Trong ES mới hỗ trợ chúng ta đọc trực tiếp các phần tử trong mảng gán cho 1 biến luôn 
+    theo thứ tự phần tử, từ đó có thể sử dụng biến đó cho các logic bên dưới. Cách này rất tiện và thông minh có thể áp dụng
+     cho map, set, string -->
+</body>
+<script>
+    let numbers =[1,2,3,4,5]
+    console.log(numbers[0])
+
+    let [one,two,...rest] =numbers
+    console.log(one)
+    console.log(two)
+    console.log(rest)
+
+    let [first =1 ,second] = []
+    console.log(first)
+
+    let [number1,number2] =new Set([1,2,3])
+    console.log(number1)
+    console.log(number2)
+
+    let [a,b,c] = "xyz"
+    console.log(a)
+    console.log(c)
+
+    const user ={};
+    [user.name,user.address]="JavaMaster HaNoi".split(" ");
+    console.log(user)
+    console.log(user.name)
+</script>
+</html>

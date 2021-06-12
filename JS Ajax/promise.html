@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+
+<body>
+    <!-- Promise là đối tượng JS trong Javascript giúp theo dõi các hàm và sự kiện bất đồng bộ để gọi hàm callback
+    về theo trạng thái thành công hay thất bại. Giúp chúng ta tạo ra update trạng thái phản hồi dễ dàng và thuận tiện hơn. -->
+    <script>
+        let promises = new Promise(function (resolve, reject) {
+            // setTimeout(() => {
+            //     resolve(("ok"), 1000)
+            // })
+            setTimeout(() => {
+                reject(("500 error"), 1000)
+            })
+        })
+
+        //Cach viet 1
+        promises.then(
+            (resp) => {
+                console.log(resp)
+            },
+            (err) => {
+                console.log("Error cach 1:"+err)
+            }
+        )
+
+
+        //Cach viet 2
+        promises.then(
+            (resp) => {
+                console.log(resp)
+                return resp
+            }
+        ).catch(
+            (err) => {
+                console.log("Error cach 2:"+err)
+                throw err
+            }
+        ).then(
+            (data) => {
+                console.log("Data :" + data)
+            }
+        ).catch(
+            (e) => {
+                console.log("Error:" + e)
+            }
+        )
+    </script>
+</body>
+
+</html>

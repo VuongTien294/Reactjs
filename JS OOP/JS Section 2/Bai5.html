@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai5</title>
+</head>
+
+<body>
+    <script>
+        var PersonList = [{ id: 1, name: 'A', age: 20, address: { street: "Tran Phu", city: "Ha noi" } }, { id: 2, name: "B", age: 12 },{ id: 3, name: 'C', age: 20, address: { street: "Quang Trung", city: "Ha noi" } }]
+        console.log(PersonList)
+        //ham info
+        function info() {
+            for (let i = 0; i < PersonList.length; i++) {
+                let person = PersonList[i]
+                //dung for in de duyet mang
+                for (var k in person) {//k dai dien cho nhung thuoc tinh trong object
+                    console.log(person[k])
+
+                }
+            }
+            // var person = array[x]
+            // console.log(person)
+        }
+
+        info()//Goi ham
+
+
+        //Ham tim so tuoi lon nhat
+        var max = PersonList[0]//gan bien max cho 1 doi tuong trong mang
+        function findAge() {
+            for (let i = 0; i < PersonList; i++) {//duyet mang
+                if (PersonList[i].age > max.age) {//dk neu mang person i co tuoi ai do lon hon tuoi cua max
+                    max = PersonList[i]// neu co thi gan lai tuoi cho max bang tuoi lon hon do
+                }
+            }
+            console.log("Person co tuoi lon nhat la :" + max.name)
+        }
+
+        findAge()//goi ham
+
+        //Ham tim dia chi la Ha Noi   
+        function findAddress() {
+            for (let i = 0; i < PersonList; i++) {//duyet mang
+                if (PersonList[i].address.city=="Ha Noi") {
+                    max = PersonList[i]
+                }
+                
+            }
+            console.log("Person co dia chi la Ha Noi la :" + max.name)          
+        }
+
+        findAddress()//goi ham
+
+        //Ham sap xep ten theo abc
+        //Cach 1
+        var sapXep = PersonList.sort(function (a,b) {
+            if (a.name.toLowerCase()<b.name.toLowerCase()) {
+                return -1
+            }
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                return 1;
+            } else {
+                return 0;
+            } 
+        })
+        console.log(sapXep)
+        ////
+        //Cach 2
+        var Xep = PersonList.sort(function (a, b) {
+            return a - b;
+
+        })
+
+        console.log(Xep)
+
+        //push 1 doi tuong vao PersonList
+        newPerson = {id:1,name:"Hoa",age:21}
+        PersonList.push(newPerson)
+        console.log(PersonList)
+
+        //Sử dụng JSON (stringify và parse) để clone lại ra mảng khác thứ 2.
+        newPerson2 = JSON.parse(JSON.stringify(newPerson))
+
+        //Gộp 2 mảng với nhau ra mảng mới thứ 3.
+        //Gop 2 mang PersonList va newPerson
+        personS =PersonList.concat(newPerson)//dung ham concat
+        console.log(personS)
+
+        //Loại bỏ những đối tượng trùng nhau id. (dùng for co ban)
+        /////////////////////////////
+        var deleteId = personS.filter((item, index) => personS.indexOf(item) === index)
+        var xoa = [new Set(deleteId)]
+        lastPerson = personS.filter((p, index, self) =>
+            index === self.findIndex((person) => (
+                person.id === p.id
+            ))
+        )
+        console.log(lastPerson)
+        /////////////////////////
+
+
+    </script>
+</body>
+
+</html>

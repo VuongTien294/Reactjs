@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async-Await</title>
+</head>
+
+<body>
+    <!--
+     Async/Await là một cách khác để chúng ta làm việc với Promise để đơn giản việc code và sử dụng, 
+    giúp code ngắn đi và rõ ràng hơn so với cách sử dụng đối tượng promise
+    +Async giúp ta tạo 1 promises 1 cách đơn giản nhanh gọn.Khi sử dụng hàm này thì ta vẫn  then-catch như bt
+
+    +Await dùng trong hàm async để đợi 1 kết quả trả về từ 1 promises và thay vì then-catch ta có thể await để 
+    nhận kết quả resolve về.Còn nếu nhảy vào reject thì ta dùng try-catch
+    -->
+    <script>
+        // function hello() {
+        //     return new Promise((resolve,reject)=>{
+        //         resolve("Hello")
+        //        // reject("error") goi resolve thi no se nhay vao Hello.Con ko thi no se nhay vao error
+        //     })         
+        // }
+        //cach viet tren se tuong duong voi cach viet dung async sau
+        async function hello() {
+            throw "error"//neu goi ham reject
+            // return "Hello"//neu goi ham resolve
+        }
+
+        //Goi ham hello()
+        hello().then(resp =>
+            console.log(resp)
+        ).catch(err =>
+            console.log(err)//tra ve error
+        )
+
+        // console.log(hello())//tra ve 1 doi tuong Promises nhung se dc in ra console trc "error" o tren
+
+        async function wait() {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Success")
+                    //reject("error")
+                }, 1000);
+            })
+
+            // promise.then(resp => console.log(resp))
+            //     .catch(err => console.log(err))
+            // let resp = await promise
+            // console.log(resp)
+
+            //bat doi tuong Promise
+            try {
+                let resp = await promise// đợi biến promise ở trên xử lí xong
+                console.log(resp)//tra ve success
+                return resp
+            } catch (err) {
+                console.log(err)
+            }
+            console.log("DONE")
+        }
+
+        //bat ham wait
+        async function run() {
+            let data = await wait()
+            console.log(data)//tra ve success
+        }
+
+        run()
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Propotypes</title>
+</head>
+<body>
+    <!-- Dung de them thuoc tinh vao trong object funtion -->
+    <script>
+        function Person(id,name,age) {
+            this.id=id
+            this.name=name
+            this.age=age
+            //cach 1:
+            //this.address =address
+            this.info =function () {
+                console.log(this.id+"-"+this.name+"-"+this.age)
+            }
+            this.changeName =function(newName){
+                this.name =newName
+            }
+        }
+        var person1 =new Person(1,"Tien",21)
+        var person2 =new Person(2,"Nga",21)
+
+        person1.info()
+        person2.info()
+
+        //cach 2
+        // person1.address ="Hanoi"
+        // person2.address ="Hanoi"
+        
+        //cach 3 :Dung propotypes
+        Person.prototype.address ="Ha Noi"
+        console.log(person1.address)
+        console.log(person2.address)
+
+        Person.prototype.fullInfo = function(){
+            console.log(this.id+"-"+this.name+"-"+this.age+"-"+this.address)
+        }
+
+        person1.fullInfo()
+
+
+    </script>
+</body>
+</html>

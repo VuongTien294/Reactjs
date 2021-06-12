@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Ajax</title>
+</head>
+
+<body>
+    <!-- Sử dụng cơ chế AJAX trong javascript để gọi các request từ client lên server lấy dữ liệu và trả về qua hàm FETCH (ES6) .
+     Trong bài này chúng ta gửi lên dữ liệu là một JSON Text trong body. -->
+    <h1>AJAX = Asynchronous JavaScript And XML</h1>
+    <script>
+        const BASE_URL = "http://localhost:8080/api";
+        const SEARCH_CATEGORY_URL = BASE_URL + "/category/search"
+
+        let requestBody = {
+            "start": 0,
+            "length": 10
+        }
+
+
+        //cach thuong dung async - await
+        loadCategory = async () => {
+            
+            let resp = await fetch(SEARCH_CATEGORY_URL,//ham fetch nay truyen vao URL va 1 doi tuong
+                {
+                    method: "POST",//kieu 
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(requestBody)//chuyen doi tuong requestBody thanh dang JSON
+                }
+            )
+            console.log(resp)
+
+            try {
+                if (resp.ok) {
+                    let responseDTO = await resp.json()
+                    console.log(responseDTO)
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        loadCategory()
+
+        //cach cu
+        // let promise = fetch(SEARCH_CATEGORY_URL,
+        //     {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify(requestBody)
+        //     }
+        // )
+
+        // promise.then(resp => {
+        //     console.log(resp)
+        //     if (resp.ok) {
+        //         return resp.json()
+        //     }
+        // }).catch(err => {
+        //     console.log(err)
+        // }).then(responseDTO => {
+        //     console.log(responseDTO)
+        // })
+
+    </script>
+</body>
+
+</html>

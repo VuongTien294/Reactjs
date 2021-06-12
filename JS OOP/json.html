@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <script>
+        //JSON la 1 dang string cua doi tuong
+        var person ={id:1,name:"Tien",age:21}
+
+        let jsonString =JSON.stringify(person)//ham stringify cho phep doi doi tuong ve dang String JSON
+        console.log(jsonString)
+
+        let p = JSON.parse(jsonString)//ham parse cho phep doi tu dang string sang doi tuong
+        console.log(p)
+
+        //chuyen doi mang doi tuong sang json
+        let array =[{id:2,name:"Nga",age:21},{id:3,name:"Hoa"}]
+        let jsonArray = JSON.stringify(array)
+        console.log(jsonArray)
+
+        //cach clone 1 doi tuong (nghia la giong nhau thuoc tinh nhung ban chat la 2 doi tuong khac nhau)
+        person2 =JSON.parse(JSON.stringify(person))
+        console.log(person)
+        console.log(person2)
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- <div class=”container”> -->
+    <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3 border bg-light">Nhap 1 tu tieng anh</div>
+                <input type="text" id="a" name="name" />
+                <button type="button" onclick="kiemtra()">Kiem tra</button>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">Ket qua</div>
+                <textarea id="b"></textarea>
+
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <script>
+        window.onload=function(){
+            let arrayLib = ["Hello","GoodBye"]
+            let ketqua = document.getElementById("b")
+            ketqua.innerHTML = arrayLib
+        }
+       
+        
+        let kiemtra=()=>{
+            let arrayLib = ["Hello","GoodBye"]
+            console.log("Mang cu :"+arrayLib)
+            let text = document.getElementById("a").value
+            let n = arrayLib.find(function (item) {
+                return item == text
+            })
+            if (n != null) {
+                let ketqua = document.getElementById("b")
+                // ketqua.innerHTML = n
+                //  ketqua.innerHTML = arrayLib
+                var z =confirm("Ban co muon xoa ko ?")
+                if (z == true) {
+                    let newArray = arrayLib.filter(item => item != n)
+                    console.log("Mang moi sau khi xoa :"+newArray)
+                    ketqua.innerHTML = newArray
+
+                }
+            } else {
+                arrayLib.push(text)
+                alert("Da them vao mang!")
+                console.log(arrayLib)
+                document.getElementById("b").innerHTML = arrayLib
+            }
+
+        }
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

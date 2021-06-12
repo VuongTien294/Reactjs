@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Add Category</title>
+</head>
+<body>
+    <script>
+        const BASE_URL = "http://localhost:8080/api";
+        const ADD_CATEGORY_URL = BASE_URL +"/admin/category/add"
+
+        let requestBody ={
+            "name":"TEST 2"//khi add moi thi ko can id nen o day ko truyen vao
+        }
+
+        addCategory = async()=>{
+            let token =btoa("0123456789:123456")
+            let resp = await fetch(ADD_CATEGORY_URL,
+            {
+                method:"POST",
+                headers:{
+                    "Authorization": "Basic " + token,
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify(requestBody)
+            }
+              
+            )
+
+            console.log(resp)
+            try {
+                if (resp.ok) {
+                    let responseDTO = await resp.json()
+                    console.log(responseDTO)
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        addCategory()
+    </script>
+</body>
+</html>

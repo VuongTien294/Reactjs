@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Array(Mang doi tuong)</title>
+</head>
+<body>
+    <script>
+var personList =[//khai bao mang object
+    {stt:1,name:"Tien"},{stt:2,name:"Nga"},{stt:3,name:"Keo",age:30}
+]
+
+for (let i = 0; i < personList.length; i++) {
+    let person =personList[i]
+    //dung for in de duyet mang
+    for (var k in person ) {//k dai dien cho nhung thuoc tinh trong object
+        console.log(person[k])
+        
+    }
+}
+
+ p ={stt:4,name:"Thuy"}
+ personList.push(p)
+ console.log(personList.length)//do dai cua mang
+console.log(personList[personList.length-1].name)//lay ten cua object cuoi cung trong mang
+    </script>
+</body>
+</html>

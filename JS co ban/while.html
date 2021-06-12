@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While</title>
+</head>
+<body>
+    <script>
+        //While
+        function Print() {
+            var i=0;
+            while (i<10) {//in Hello ra 10 lan
+                console.log("Hello "+i);
+                i++;
+            }
+            console.log("End while")
+        }
+        
+        function GiaiThua(n) {
+            if (n <= 0) {
+                console.log("n ko the <=0");
+            } else {
+                var tich = 1;
+                var i = 1;
+                while (i<=n) {
+                    tich *= i;// Nhan don i lai
+                    i++;//Tang i them 1 don vi den khi nap i = n
+                    
+                }
+                console.log("n! la :"+tich);
+            }
+        }
+
+        //Do While
+        function DoWhilePrint() {
+            var i=0;
+             do{//in Hello ra 10 lan
+                console.log("Hello "+i);
+                i++;
+            } while (i<10)
+            console.log("End do while")
+        }
+
+        //Goi ham
+        Print()
+        GiaiThua(2)
+        DoWhilePrint()
+
+        
+    </script>
+</body>
+</html>
